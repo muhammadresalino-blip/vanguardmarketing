@@ -76,9 +76,7 @@ Vanguard Marketing aims to connect digital marketing activities with sales opera
 
 This repository is based on the initial product concept, requirements, proposed architecture, and development roadmap. Features and integrations will depend on the implementation phase.
 
-## License
 
-A license has not yet been specified. Please add an appropriate license before distributing or reusing this project publicly.
 # Vanguard Marketing
 
 Platform digital marketing MVP: portal publik, CRM lead, pipeline penjualan, kampanye, dan
@@ -126,4 +124,5 @@ Panduan lengkap — arsitektur, akun demo, alur uji, endpoint API, database, dep
 
 ## Lisensi
 
+A license has not yet been specified. Please add an appropriate license before distributing or reusing this project publicly.
 Proyek contoh untuk keperluan internal. Sesuaikan sebelum dipakai komersial.

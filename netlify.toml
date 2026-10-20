@@ -1,0 +1,9 @@
+[build]
+  command = "pnpm build"
+  publish = "dist"
+
+# SPA: semua path yang bukan berkas statis diarahkan ke index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

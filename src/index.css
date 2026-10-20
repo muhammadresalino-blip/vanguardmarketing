@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Vanguard Marketing — Design System
+   Palet: navy (primary), teal (secondary), orange (accent)
+   ========================================================================== */
+
+@theme {
+  --color-navy-50: #eef2fb;
+  --color-navy-100: #d7e0f5;
+  --color-navy-200: #aec1ea;
+  --color-navy-300: #7f9bdc;
+  --color-navy-400: #4f74c9;
+  --color-navy-500: #2f53ae;
+  --color-navy-600: #23408f;
+  --color-navy-700: #1e3a8a;
+  --color-navy-800: #172d6b;
+  --color-navy-900: #101f4a;
+
+  --color-teal-50: #eefbf8;
+  --color-teal-100: #d0f5ee;
+  --color-teal-200: #a3ebde;
+  --color-teal-300: #6ddac9;
+  --color-teal-400: #34c0ae;
+  --color-teal-500: #14a496;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f6f68;
+  --color-teal-800: #115854;
+  --color-teal-900: #114945;
+
+  --color-accent-50: #fff6ed;
+  --color-accent-100: #ffe9d4;
+  --color-accent-200: #fdcfa8;
+  --color-accent-300: #fbae71;
+  --color-accent-400: #f98538;
+  --color-accent-500: #f97316;
+  --color-accent-600: #e35c0b;
+  --color-accent-700: #bc450b;
+  --color-accent-800: #953811;
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  --font-display:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-700 antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-navy-900 font-bold tracking-tight;
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent-500;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section {
+    @apply py-14 sm:py-20;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-teal-700;
+  }
+
+  /* --- Buttons ------------------------------------------------------------ */
+  /* Tailwind v4 tidak bisa @apply class komponen sendiri, jadi kelas dasar
+     dan variannya memakai satu daftar selector. */
+  .btn,
+  .btn-primary,
+  .btn-accent,
+  .btn-teal,
+  .btn-outline,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold
+      transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-navy-700 text-white hover:bg-navy-800;
+  }
+
+  .btn-accent {
+    @apply bg-accent-500 text-white hover:bg-accent-600;
+  }
+
+  .btn-teal {
+    @apply bg-teal-600 text-white hover:bg-teal-700;
+  }
+
+  .btn-outline {
+    @apply border border-navy-200 bg-white text-navy-700 hover:border-navy-400 hover:bg-navy-50;
+  }
+
+  .btn-ghost {
+    @apply text-slate-600 hover:bg-slate-100 hover:text-navy-800;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  /* --- Surfaces ----------------------------------------------------------- */
+  .card,
+  .card-pad {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+
+  .card-pad {
+    @apply p-5 sm:p-6;
+  }
+
+  /* --- Forms -------------------------------------------------------------- */
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-navy-900;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800
+      placeholder:text-slate-400 focus:border-navy-500 focus:ring-2 focus:ring-navy-100 focus:outline-none;
+  }
+
+  .input-error {
+    @apply border-red-400 focus:border-red-500 focus:ring-red-100;
+  }
+
+  .error-text {
+    @apply mt-1 text-xs font-medium text-red-600;
+  }
+
+  /* --- Tables ------------------------------------------------------------- */
+  .table-wrap {
+    @apply w-full overflow-x-auto;
+  }
+
+  .table {
+    @apply w-full min-w-[720px] border-collapse text-left text-sm;
+  }
+
+  .table thead th {
+    @apply border-b border-slate-200 bg-slate-50 px-4 py-3 text-xs font-semibold uppercase
+      tracking-wide text-slate-500;
+  }
+
+  .table tbody td {
+    @apply border-b border-slate-100 px-4 py-3 align-middle text-slate-700;
+  }
+
+  .table tbody tr:hover {
+    @apply bg-slate-50/70;
+  }
+}

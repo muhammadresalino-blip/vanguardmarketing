@@ -115,7 +115,7 @@ if ($Token) {
 
 if ($LASTEXITCODE -ne 0) {
   throw @"
-Push gagal — kemungkinan belum login ke GitHub. Pilih salah satu:
+Push gagal - kemungkinan belum login ke GitHub. Pilih salah satu:
 
   1) Login lewat GitHub CLI (sudah terpasang di laptop ini):
        gh auth login

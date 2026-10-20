@@ -438,8 +438,9 @@ app.use((_req, res) => {
 
 // eslint-disable-next-line no-unused-vars
 app.use((error, _req, res, _next) => {
-  console.error('[api]', error)
   const status = error.status || 500
+  // 4xx adalah kesalahan pemakaian (validasi/izin), tidak perlu jejak tumpukan.
+  if (status >= 500) console.error('[api]', error)
   res.status(status).json({ error: status === 500 ? 'Terjadi kesalahan di server.' : error.message })
 })
 

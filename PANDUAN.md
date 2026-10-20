@@ -290,21 +290,44 @@ Belum ada (sebaiknya sebelum produksi serius):
 - `pnpm start` (mode produksi) lebih ringan daripada dev server karena tanpa HMR.
 - Pakai `pnpm`, jangan `npm install`.
 
-## 13. Git
+## 13. Git & GitHub
 
-Repo sudah diinisialisasi (`main`). Identitas repo ini disetel lokal:
+Remote sudah terpasang: `https://github.com/muhammadresalino-blip/vanguardmarketing`
+(branch `main`). Identitas repo ini disetel lokal:
 
 ```powershell
 git config user.name "Raul"
 git config user.email "raul@vanguardmarketing.local"
 ```
 
-Ganti dengan email GitHub bila repo akan di-push. Perintah harian:
+Ganti email dengan email GitHub bila ingin commit terhubung ke profil:
+
+```powershell
+git config user.email "email-github-kamu"
+```
+
+**Cara tercepat mengirim perubahan:**
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\push-github.ps1
+```
+
+Skrip akan commit perubahan, menyinkronkan dengan GitHub, lalu push.
+Bila belum pernah login, pilih salah satu:
+
+```powershell
+gh auth login                                   # GitHub CLI (sudah terpasang)
+.\push-github.ps1 -Token "ghp_xxxxxxxx"         # Personal Access Token, scope: repo
+git push -u origin main                         # lewat Git Credential Manager
+```
+
+Perintah harian:
 
 ```powershell
 git status
 git add -A
 git commit -m "pesan perubahan"
+git push
 ```
 
 ## 14. Troubleshooting

@@ -82,17 +82,17 @@ export function Pipeline() {
       <div className="grid gap-4 sm:grid-cols-3">
         <div className="card-pad">
           <p className="text-sm text-slate-500">Deal terbuka</p>
-          <p className="mt-1 text-2xl font-bold text-navy-900">{openDeals.length}</p>
+          <p className="mt-1 text-2xl font-bold text-neutral-900">{openDeals.length}</p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Nilai pipeline</p>
-          <p className="mt-1 text-2xl font-bold text-navy-900">
+          <p className="mt-1 text-2xl font-bold text-neutral-900">
             {formatCompactCurrency(openDeals.reduce((sum, deal) => sum + deal.value, 0))}
           </p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Proyeksi berbobot</p>
-          <p className="mt-1 text-2xl font-bold text-teal-700">{formatCompactCurrency(weighted)}</p>
+          <p className="mt-1 text-2xl font-bold text-accent-600">{formatCompactCurrency(weighted)}</p>
           <p className="mt-1 text-xs text-slate-500">
             Nilai menang tercatat: {formatCompactCurrency(wonValue)}
           </p>
@@ -116,7 +116,7 @@ export function Pipeline() {
             <section key={column.value} className="flex flex-col rounded-xl border border-slate-200 bg-white">
               <header className="border-b border-slate-100 px-4 py-3">
                 <div className="flex items-center justify-between gap-2">
-                  <h2 className="text-sm font-bold text-navy-900">{column.label}</h2>
+                  <h2 className="text-sm font-bold text-neutral-900">{column.label}</h2>
                   <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600">
                     {column.deals.length}
                   </span>
@@ -132,9 +132,9 @@ export function Pipeline() {
                   const owner = userMap.get(deal.ownerId)
                   return (
                     <li key={deal.id} className="rounded-lg border border-slate-200 p-3">
-                      <p className="text-sm font-semibold text-navy-900">{lead?.company ?? deal.dealName}</p>
+                      <p className="text-sm font-semibold text-neutral-900">{lead?.company ?? deal.dealName}</p>
                       <p className="text-xs text-slate-500">{lead?.name ?? '-'}</p>
-                      <p className="mt-2 text-sm font-medium text-navy-800">
+                      <p className="mt-2 text-sm font-medium text-neutral-800">
                         {formatCompactCurrency(deal.value)}
                       </p>
                       <p className="mt-1 text-xs text-slate-500">
@@ -180,7 +180,7 @@ export function Pipeline() {
                           </button>
                         )}
                         {lead && (
-                          <Link to={`/admin/leads/${lead.id}`} className="btn-ghost btn-sm px-1 text-teal-700">
+                          <Link to={`/admin/leads/${lead.id}`} className="btn-ghost btn-sm px-1 text-accent-600">
                             Detail
                           </Link>
                         )}

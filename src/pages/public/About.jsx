@@ -81,7 +81,7 @@ export function About() {
                 {STATS.map((stat) => (
                   <div key={stat.label}>
                     <dt className="text-xs uppercase tracking-wide text-slate-400">{stat.label}</dt>
-                    <dd className="text-xl font-bold text-navy-900">{stat.value}</dd>
+                    <dd className="text-xl font-bold text-neutral-900">{stat.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -93,7 +93,7 @@ export function About() {
                 {TEAM.map((member) => (
                   <li key={member.name} className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="font-semibold text-navy-900">{member.name}</p>
+                      <p className="font-semibold text-neutral-900">{member.name}</p>
                       <p className="text-slate-500">{member.role}</p>
                     </div>
                     <span className="text-right text-xs text-slate-500">{member.focus}</span>
@@ -102,7 +102,7 @@ export function About() {
               </ul>
             </div>
 
-            <div className="card-pad bg-navy-50">
+            <div className="card-pad bg-primary-50">
               <h3 className="text-base">Alamat & kontak</h3>
               <p className="mt-3 text-sm text-slate-600">{COMPANY.address}</p>
               <p className="mt-1 text-sm text-slate-600">{COMPANY.phone}</p>

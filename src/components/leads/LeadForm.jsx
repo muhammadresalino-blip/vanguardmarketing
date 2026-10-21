@@ -110,17 +110,17 @@ export function LeadForm({
 
   if (result) {
     return (
-      <div className="card-pad border-teal-200 bg-teal-50/60">
-        <p className="text-sm font-semibold text-teal-800">
+      <div className="card-pad border-accent-200 bg-accent-50/60">
+        <p className="text-sm font-semibold text-accent-800">
           {result.duplicate ? 'Data Anda sudah kami perbarui' : 'Terima kasih, permintaan sudah masuk'}
         </p>
-        <p className="mt-2 text-sm text-teal-900/80">
+        <p className="mt-2 text-sm text-accent-800/80">
           {result.duplicate
             ? 'Kami menemukan email atau nomor telepon yang sudah terdaftar, jadi data tersebut diperbarui dan tidak dibuat ganda.'
             : `Lead Anda tercatat dengan ID ${result.lead.id} dan status awal New.`}{' '}
           Tim sales akan menghubungi Anda pada jam kerja.
         </p>
-        <ul className="mt-3 space-y-1 text-sm text-teal-900/80">
+        <ul className="mt-3 space-y-1 text-sm text-accent-800/80">
           <li>• Sumber tercatat: {result.lead.source}</li>
           {result.lead.utmCampaign && <li>• Kampanye: {result.lead.utmCampaign}</li>}
           <li>• Estimasi waktu respons tim: &lt; 1 jam</li>
@@ -135,10 +135,10 @@ export function LeadForm({
   return (
     <form onSubmit={handleSubmit} noValidate className={compact ? '' : 'card-pad'}>
       <div className="mb-5">
-        <h3 className="text-lg font-bold text-navy-900">{headline}</h3>
+        <h3 className="text-lg font-bold text-neutral-900">{headline}</h3>
         <p className="mt-1 text-sm text-slate-500">{description}</p>
         {campaign && (
-          <p className="mt-2 inline-flex rounded-md bg-navy-50 px-2.5 py-1 text-xs font-medium text-navy-700">
+          <p className="mt-2 inline-flex rounded-md bg-primary-50 px-2.5 py-1 text-xs font-medium text-primary-600">
             Kampanye: {campaign.name} · {campaign.channel}
           </p>
         )}
@@ -253,13 +253,13 @@ export function LeadForm({
       <label className="mt-4 flex items-start gap-3 text-sm text-slate-600">
         <input
           type="checkbox"
-          className="mt-0.5 h-4 w-4 rounded border-slate-300 text-navy-700"
+          className="mt-0.5 h-4 w-4 rounded border-slate-300 text-primary-600"
           checked={form.consent}
           onChange={setField('consent')}
         />
         <span>
           Saya setuju data ini digunakan untuk menindaklanjuti permintaan saya sesuai{' '}
-          <span className="font-medium text-navy-700">kebijakan privasi</span>.
+          <span className="font-medium text-primary-600">kebijakan privasi</span>.
           {errors.consent && <span className="error-text block">{errors.consent}</span>}
         </span>
       </label>

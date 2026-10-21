@@ -159,18 +159,18 @@ export function Leads() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <div className="card-pad">
           <p className="text-sm text-slate-500">Lead sesuai filter</p>
-          <p className="mt-1 text-2xl font-bold text-navy-900">{summary.total}</p>
+          <p className="mt-1 text-2xl font-bold text-neutral-900">{summary.total}</p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Berkualifikasi</p>
-          <p className="mt-1 text-2xl font-bold text-teal-700">
+          <p className="mt-1 text-2xl font-bold text-accent-600">
             {summary.qualified}{' '}
             <span className="text-sm font-medium text-slate-400">({formatPercent(summary.qualityRate)})</span>
           </p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Rata-rata respons</p>
-          <p className="mt-1 text-2xl font-bold text-navy-900">{summary.avgResponse} menit</p>
+          <p className="mt-1 text-2xl font-bold text-neutral-900">{summary.avgResponse} menit</p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Belum ada pemilik</p>
@@ -311,7 +311,7 @@ export function Leads() {
             type="button"
             onClick={() => applyStatusFilter('all')}
             className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-              status === 'all' ? 'bg-navy-700 text-white' : 'border border-slate-200 text-slate-600'
+              status === 'all' ? 'bg-primary-600 text-white' : 'border border-slate-200 text-slate-600'
             }`}
           >
             Semua
@@ -325,7 +325,7 @@ export function Leads() {
                 type="button"
                 onClick={() => applyStatusFilter(value)}
                 className={`rounded-full px-3 py-1.5 text-xs font-semibold ${
-                  status === value ? 'bg-navy-700 text-white' : 'border border-slate-200 text-slate-600'
+                  status === value ? 'bg-primary-600 text-white' : 'border border-slate-200 text-slate-600'
                 }`}
               >
                 {meta?.label} ({count})
@@ -375,7 +375,7 @@ export function Leads() {
                         <td>
                           <Link
                             to={`/admin/leads/${lead.id}`}
-                            className="font-semibold text-navy-800 hover:text-navy-600"
+                            className="font-semibold text-neutral-800 hover:text-primary-600"
                           >
                             {lead.name}
                           </Link>

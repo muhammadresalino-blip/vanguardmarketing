@@ -71,11 +71,11 @@ export function LineChart({ data, height = 220 }) {
         })}
 
         <path d={areaPath} fill="rgba(30,58,138,0.10)" />
-        <path d={linePath} fill="none" stroke="#1e3a8a" strokeWidth="2.5" strokeLinejoin="round" />
+        <path d={linePath} fill="none" stroke="#3882F6" strokeWidth="2.5" strokeLinejoin="round" />
         <path
           d={qualifiedPath}
           fill="none"
-          stroke="#0d9488"
+          stroke="#10B981"
           strokeWidth="2"
           strokeDasharray="5 4"
           strokeLinejoin="round"
@@ -103,8 +103,8 @@ export function LineChart({ data, height = 220 }) {
                   stroke="#94a3b8"
                   strokeWidth="1"
                 />
-                <circle cx={point.x} cy={point.y} r="4.5" fill="#1e3a8a" />
-                <circle cx={point.x} cy={point.yQualified} r="4" fill="#0d9488" />
+                <circle cx={point.x} cy={point.y} r="4.5" fill="#3882F6" />
+                <circle cx={point.x} cy={point.yQualified} r="4" fill="#10B981" />
               </g>
             )}
             <rect
@@ -122,14 +122,14 @@ export function LineChart({ data, height = 220 }) {
       <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs">
         <div className="flex items-center gap-4">
           <span className="inline-flex items-center gap-1.5 text-slate-600">
-            <span className="h-2 w-4 rounded-full bg-navy-700" /> Total lead
+            <span className="h-2 w-4 rounded-full bg-primary-600" /> Total lead
           </span>
           <span className="inline-flex items-center gap-1.5 text-slate-600">
-            <span className="h-2 w-4 rounded-full bg-teal-600" /> Lead berkualifikasi
+            <span className="h-2 w-4 rounded-full bg-accent-600" /> Lead berkualifikasi
           </span>
         </div>
         {hover !== null && points[hover] && (
-          <span className="font-medium text-navy-900">
+          <span className="font-medium text-neutral-900">
             {formatDate(points[hover].label)}: {formatNumber(points[hover].total)} lead (
             {formatNumber(points[hover].qualified)} berkualifikasi)
           </span>

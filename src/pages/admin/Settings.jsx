@@ -108,7 +108,7 @@ export function Settings() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          {savedAt && <span className="text-xs text-teal-700">Tersimpan {formatRelativeTime(savedAt)}</span>}
+          {savedAt && <span className="text-xs text-accent-600">Tersimpan {formatRelativeTime(savedAt)}</span>}
           <button type="button" className="btn-primary btn-sm" onClick={handleSave}>
             Simpan perubahan
           </button>
@@ -297,7 +297,7 @@ export function Settings() {
           {INTEGRATIONS.map((integration) => (
             <div key={integration.id} className="rounded-xl border border-slate-200 p-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <p className="text-sm font-semibold text-navy-900">{integration.name}</p>
+                <p className="text-sm font-semibold text-neutral-900">{integration.name}</p>
                 <Badge tone={STATUS_TONE[integration.status]}>{integration.status}</Badge>
               </div>
               <p className="mt-1 text-sm text-slate-600">{integration.purpose}</p>
@@ -348,23 +348,23 @@ export function Settings() {
           <dl className="mt-4 space-y-2 text-sm">
             <div className="flex items-center justify-between gap-3">
               <dt className="text-slate-500">Lead</dt>
-              <dd className="font-semibold text-navy-900">{leads.length}</dd>
+              <dd className="font-semibold text-neutral-900">{leads.length}</dd>
             </div>
             <div className="flex items-center justify-between gap-3">
               <dt className="text-slate-500">Aktivitas</dt>
-              <dd className="font-semibold text-navy-900">{activities.length}</dd>
+              <dd className="font-semibold text-neutral-900">{activities.length}</dd>
             </div>
             <div className="flex items-center justify-between gap-3">
               <dt className="text-slate-500">Kampanye</dt>
-              <dd className="font-semibold text-navy-900">{campaigns.length}</dd>
+              <dd className="font-semibold text-neutral-900">{campaigns.length}</dd>
             </div>
             <div className="flex items-center justify-between gap-3">
               <dt className="text-slate-500">Artikel</dt>
-              <dd className="font-semibold text-navy-900">{posts.length}</dd>
+              <dd className="font-semibold text-neutral-900">{posts.length}</dd>
             </div>
             <div className="flex items-center justify-between gap-3">
               <dt className="text-slate-500">Pengguna</dt>
-              <dd className="font-semibold text-navy-900">{users.length}</dd>
+              <dd className="font-semibold text-neutral-900">{users.length}</dd>
             </div>
           </dl>
 

@@ -63,10 +63,10 @@ function NotificationBell() {
           />
           <div className="absolute right-0 z-40 mt-2 w-80 rounded-xl border border-slate-200 bg-white shadow-lg">
             <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3">
-              <p className="text-sm font-semibold text-navy-900">Notifikasi</p>
+              <p className="text-sm font-semibold text-neutral-900">Notifikasi</p>
               <button
                 type="button"
-                className="text-xs font-medium text-teal-700 hover:underline"
+                className="text-xs font-medium text-accent-600 hover:underline"
                 onClick={() => markAllNotificationsRead(user?.id)}
               >
                 Tandai dibaca
@@ -77,7 +77,7 @@ function NotificationBell() {
                 <li className="px-4 py-6 text-center text-sm text-slate-500">Belum ada notifikasi.</li>
               )}
               {mine.map((notification) => (
-                <li key={notification.id} className={notification.read ? 'bg-white' : 'bg-navy-50/50'}>
+                <li key={notification.id} className={notification.read ? 'bg-white' : 'bg-primary-50/50'}>
                   <button
                     type="button"
                     className="w-full px-4 py-3 text-left"
@@ -127,7 +127,7 @@ export function AdminLayout() {
           onClick={() => setMobileOpen(false)}
           className={({ isActive }) =>
             `flex items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-              isActive ? 'bg-navy-700 text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-navy-800'
+              isActive ? 'bg-primary-600 text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-neutral-800'
             }`
           }
         >
@@ -172,7 +172,7 @@ export function AdminLayout() {
             <button
               type="button"
               aria-label="Tutup menu"
-              className="absolute inset-0 bg-navy-900/40"
+              className="absolute inset-0 bg-neutral-900/40"
               onClick={() => setMobileOpen(false)}
             />
             <div className="relative z-10 h-full w-72 max-w-[85%] overflow-y-auto bg-white">{sidebar}</div>
@@ -192,7 +192,7 @@ export function AdminLayout() {
                   ☰
                 </button>
                 <div className="hidden sm:block">
-                  <p className="text-sm font-semibold text-navy-900">
+                  <p className="text-sm font-semibold text-neutral-900">
                     {items.find((item) => location.pathname === item.to)?.label ?? 'Panel Marketing'}
                   </p>
                   <p className="text-xs text-slate-500">
@@ -209,7 +209,7 @@ export function AdminLayout() {
                 <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-2 py-1.5">
                   <Avatar name={user?.name} size="sm" tone="teal" />
                   <div className="hidden leading-tight sm:block">
-                    <p className="text-xs font-semibold text-navy-900">{user?.name}</p>
+                    <p className="text-xs font-semibold text-neutral-900">{user?.name}</p>
                     <p className="text-[11px] text-slate-500">{ROLE_LABEL[user?.role] ?? ''}</p>
                   </div>
                   <button

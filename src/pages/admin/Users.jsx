@@ -108,7 +108,7 @@ export function Users() {
                     <div className="flex items-center gap-3">
                       <Avatar name={user.name} size="sm" tone={user.role === 'sales' ? 'teal' : 'navy'} />
                       <div>
-                        <p className="font-medium text-navy-900">{user.name}</p>
+                        <p className="font-medium text-neutral-900">{user.name}</p>
                         <p className="text-xs text-slate-500">{user.email}</p>
                         {user.jobTitle && <p className="text-xs text-slate-400">{user.jobTitle}</p>}
                       </div>
@@ -162,12 +162,12 @@ export function Users() {
             <tbody>
               {MODULES.map((moduleName) => (
                 <tr key={moduleName}>
-                  <td className="font-medium capitalize text-navy-900">{moduleName}</td>
+                  <td className="font-medium capitalize text-neutral-900">{moduleName}</td>
                   {ROLES.map((role) => {
                     const allowed = MODULE_ACCESS[moduleName]?.includes(role.value)
                     return (
                       <td key={role.value}>
-                        <span className={allowed ? 'text-teal-700' : 'text-slate-300'}>
+                        <span className={allowed ? 'text-accent-600' : 'text-slate-300'}>
                           {allowed ? '✓' : '—'}
                         </span>
                       </td>
@@ -182,7 +182,7 @@ export function Users() {
         <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {ROLES.map((role) => (
             <div key={role.value} className="rounded-xl border border-slate-200 p-4">
-              <p className="text-sm font-semibold text-navy-900">{role.label}</p>
+              <p className="text-sm font-semibold text-neutral-900">{role.label}</p>
               <p className="mt-1 text-xs text-slate-500">{role.description}</p>
               <p className="mt-2 flex flex-wrap gap-1.5">
                 {role.permissions.map((permission) => (

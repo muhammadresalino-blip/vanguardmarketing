@@ -74,7 +74,7 @@ export function Blog() {
                 onClick={() => setCategory('all')}
                 className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
                   category === 'all'
-                    ? 'bg-navy-700 text-white'
+                    ? 'bg-primary-600 text-white'
                     : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
                 }`}
               >
@@ -87,7 +87,7 @@ export function Blog() {
                   onClick={() => setCategory(item)}
                   className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors ${
                     category === item
-                      ? 'bg-navy-700 text-white'
+                      ? 'bg-primary-600 text-white'
                       : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
                   }`}
                 >
@@ -125,7 +125,7 @@ export function Blog() {
                   <div>
                     <Badge tone="accent">Artikel unggulan</Badge>
                     <h2 className="mt-3 text-2xl">
-                      <Link to={`/blog/${featured.slug}`} className="hover:text-navy-700">
+                      <Link to={`/blog/${featured.slug}`} className="hover:text-primary-600">
                         {featured.title}
                       </Link>
                     </h2>
@@ -138,8 +138,8 @@ export function Blog() {
                       Baca artikel
                     </Link>
                   </div>
-                  <div className="mt-6 rounded-xl bg-gradient-to-br from-navy-700 to-navy-900 p-6 text-white lg:mt-0">
-                    <p className="text-sm font-semibold text-teal-200">{featured.category}</p>
+                  <div className="mt-6 rounded-xl bg-gradient-to-br from-primary-600 to-neutral-900 p-6 text-white lg:mt-0">
+                    <p className="text-sm font-semibold text-accent-200">{featured.category}</p>
                     <p className="mt-3 text-lg font-semibold">
                       Ringkasan: tetapkan satu kanal, catat sumbernya, lalu ukur kualitas lead — bukan
                       hanya jumlahnya.
@@ -154,7 +154,7 @@ export function Blog() {
                   <article key={post.id} className="card-pad flex flex-col">
                     <Badge tone="teal">{post.category}</Badge>
                     <h3 className="mt-3 text-base">
-                      <Link to={`/blog/${post.slug}`} className="hover:text-navy-700">
+                      <Link to={`/blog/${post.slug}`} className="hover:text-primary-600">
                         {post.title}
                       </Link>
                     </h3>
@@ -172,7 +172,7 @@ export function Blog() {
 
       {/* Newsletter callout */}
       <section className="section bg-slate-50">
-        <div className="container-page grid gap-6 rounded-2xl border border-navy-100 bg-white p-6 sm:p-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+        <div className="container-page grid gap-6 rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
             <h2 className="text-xl sm:text-2xl">Terima satu ringkasan taktik setiap dua minggu</h2>
             <p className="mt-2 text-sm text-slate-600">

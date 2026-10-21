@@ -58,15 +58,15 @@ export function CampaignLanding() {
   return (
     <>
       {/* Hero banner */}
-      <section className="bg-navy-900 text-white">
+      <section className="bg-neutral-900 text-white">
         <div className="container-page grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2">
           <div>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-teal-200 ring-1 ring-inset ring-white/20">
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-accent-200 ring-1 ring-inset ring-white/20">
                 {campaign ? CHANNEL_LABEL[campaign.channel] : 'Kampanye'}
               </span>
               {campaign && (
-                <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-navy-100">
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-neutral-200">
                   {campaign.name}
                 </span>
               )}
@@ -75,9 +75,9 @@ export function CampaignLanding() {
             <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl">
               {page.title}
             </h1>
-            <p className="mt-4 max-w-xl text-navy-100/90">{page.subtitle}</p>
+            <p className="mt-4 max-w-xl text-neutral-200/90">{page.subtitle}</p>
 
-            <ul className="mt-6 space-y-2 text-sm text-navy-100/85">
+            <ul className="mt-6 space-y-2 text-sm text-neutral-200/85">
               <li>✓ Tanpa biaya, tanpa komitmen kontrak</li>
               <li>✓ Dibalas tim manusia, bukan bot</li>
               <li>✓ Estimasi waktu respons &lt; 1 jam pada hari kerja</li>
@@ -88,7 +88,7 @@ export function CampaignLanding() {
             </a>
 
             {utm.utm_source && (
-              <p className="mt-4 font-mono text-xs text-navy-100/60">
+              <p className="mt-4 font-mono text-xs text-neutral-200/60">
                 Kunjungan tercatat: {utm.utm_source}
                 {utm.utm_medium ? ` / ${utm.utm_medium}` : ''}
                 {utm.utm_campaign ? ` / ${utm.utm_campaign}` : ''}
@@ -164,7 +164,7 @@ export function CampaignLanding() {
                 <Badge tone="teal">Pengguna aktif</Badge>
                 <blockquote className="mt-3 text-sm text-slate-600">“{item.quote}”</blockquote>
                 <figcaption className="mt-4 text-xs text-slate-500">
-                  <span className="font-semibold text-navy-900">{item.name}</span> · {item.role}
+                  <span className="font-semibold text-neutral-900">{item.name}</span> · {item.role}
                 </figcaption>
               </figure>
             ))}
@@ -186,7 +186,7 @@ export function CampaignLanding() {
           <div className="space-y-3">
             {FAQS.slice(0, 4).map((faq) => (
               <details key={faq.question} className="card-pad">
-                <summary className="cursor-pointer list-none font-semibold text-navy-900">
+                <summary className="cursor-pointer list-none font-semibold text-neutral-900">
                   {faq.question}
                 </summary>
                 <p className="mt-2 text-sm text-slate-600">{faq.answer}</p>
@@ -197,15 +197,15 @@ export function CampaignLanding() {
       </section>
 
       {/* CTA final + form */}
-      <section id="form" className="section scroll-mt-20 bg-navy-900">
+      <section id="form" className="section scroll-mt-20 bg-neutral-900">
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="text-white">
             <h2 className="text-2xl text-white sm:text-3xl">Satu formulir, tindak lanjut jelas</h2>
-            <p className="mt-3 text-navy-100/85">
+            <p className="mt-3 text-neutral-200/85">
               Setelah dikirim, lead Anda masuk ke CRM dengan status New dan langsung ditugaskan ke
               sales. Anda akan menerima konfirmasi, dan tim kami menghubungi Anda pada jam kerja.
             </p>
-            <ol className="mt-6 space-y-2 text-sm text-navy-100/80">
+            <ol className="mt-6 space-y-2 text-sm text-neutral-200/80">
               <li>1. Form dikirim &amp; data divalidasi</li>
               <li>2. Lead tersimpan dengan sumber kampanye</li>
               <li>3. Sales dihubungi lewat notifikasi internal</li>

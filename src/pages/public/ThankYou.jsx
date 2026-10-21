@@ -16,7 +16,7 @@ export function ThankYou() {
   return (
     <section className="container-page py-16 sm:py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-teal-100 text-2xl">
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-accent-100 text-2xl">
           ✓
         </span>
         <h1 className="mt-5 text-3xl sm:text-4xl">Terima kasih, permintaan Anda sudah masuk</h1>
@@ -38,27 +38,27 @@ export function ThankYou() {
           <dl className="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Nama</dt>
-              <dd className="text-sm font-medium text-navy-900">{lead.name}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{lead.name}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Perusahaan</dt>
-              <dd className="text-sm font-medium text-navy-900">{lead.company}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{lead.company}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Email</dt>
-              <dd className="text-sm font-medium text-navy-900">{lead.email}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{lead.email}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Telepon</dt>
-              <dd className="text-sm font-medium text-navy-900">{lead.phone}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{lead.phone}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Sumber lead</dt>
-              <dd className="text-sm font-medium text-navy-900">{lead.source}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{lead.source}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Kampanye</dt>
-              <dd className="text-sm font-medium text-navy-900">
+              <dd className="text-sm font-medium text-neutral-900">
                 {campaign?.name ?? lead.utmCampaign ?? 'Organik / langsung'}
               </dd>
             </div>
@@ -70,15 +70,15 @@ export function ThankYou() {
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Waktu masuk</dt>
-              <dd className="text-sm font-medium text-navy-900">{formatDateTime(lead.createdAt)}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{formatDateTime(lead.createdAt)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Ditugaskan ke</dt>
-              <dd className="text-sm font-medium text-navy-900">{owner?.name ?? 'Menunggu penugasan'}</dd>
+              <dd className="text-sm font-medium text-neutral-900">{owner?.name ?? 'Menunggu penugasan'}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Target respons</dt>
-              <dd className="text-sm font-medium text-navy-900">&lt; 1 jam</dd>
+              <dd className="text-sm font-medium text-neutral-900">&lt; 1 jam</dd>
             </div>
           </dl>
 

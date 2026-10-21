@@ -120,7 +120,7 @@ export function Tasks() {
             onClick={() => setTab(item.value)}
             className={`rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors ${
               tab === item.value
-                ? 'bg-navy-700 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'border border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
             }`}
           >
@@ -165,12 +165,12 @@ export function Tasks() {
                         />
                       </td>
                       <td>
-                        <p className="font-medium text-navy-900">{TASK_LABEL[task.type] ?? task.type}</p>
+                        <p className="font-medium text-neutral-900">{TASK_LABEL[task.type] ?? task.type}</p>
                         <p className="text-xs text-slate-500">{task.notes}</p>
                       </td>
                       <td>
                         {lead ? (
-                          <Link to={`/admin/leads/${lead.id}`} className="text-sm text-navy-800 hover:text-navy-600">
+                          <Link to={`/admin/leads/${lead.id}`} className="text-sm text-neutral-800 hover:text-primary-600">
                             {lead.name}
                           </Link>
                         ) : (

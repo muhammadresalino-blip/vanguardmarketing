@@ -69,7 +69,7 @@ export function BlogPost() {
   return (
     <article className="container-page py-12 sm:py-16">
       <nav className="text-sm text-slate-500" aria-label="Breadcrumb">
-        <Link to="/blog" className="hover:text-navy-700">
+        <Link to="/blog" className="hover:text-primary-600">
           Blog
         </Link>{' '}
         / <span className="text-slate-600">{post.category}</span>
@@ -93,7 +93,7 @@ export function BlogPost() {
 
           <div className="prose-vanguard mt-2 max-w-none">{renderContent(post.content)}</div>
 
-          <div className="mt-10 rounded-xl border border-navy-100 bg-navy-50 p-6">
+          <div className="mt-10 rounded-xl border border-neutral-200 bg-primary-50 p-6">
             <h2 className="text-lg">Ingin kami cek funnel Anda?</h2>
             <p className="mt-2 text-sm text-slate-600">
               Kami bisa menunjukkan bagian mana dari alur Anda yang paling berpotensi kehilangan
@@ -114,7 +114,7 @@ export function BlogPost() {
               <ul className="mt-3 space-y-4">
                 {related.map((item) => (
                   <li key={item.id}>
-                    <Link to={`/blog/${item.slug}`} className="text-sm font-semibold text-navy-800 hover:text-navy-600">
+                    <Link to={`/blog/${item.slug}`} className="text-sm font-semibold text-neutral-800 hover:text-primary-600">
                       {item.title}
                     </Link>
                     <p className="mt-1 text-xs text-slate-500">{formatDate(item.publishedAt)}</p>

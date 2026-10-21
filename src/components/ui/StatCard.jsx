@@ -2,8 +2,8 @@ import { formatPercent } from '../../lib/format.js'
 
 export function StatCard({ label, value, hint, trend, trendLabel, icon, tone = 'navy' }) {
   const toneRing = {
-    navy: 'bg-navy-50 text-navy-700',
-    teal: 'bg-teal-50 text-teal-700',
+    navy: 'bg-primary-50 text-primary-600',
+    teal: 'bg-accent-50 text-accent-600',
     accent: 'bg-accent-50 text-accent-700',
     green: 'bg-emerald-50 text-emerald-700',
     red: 'bg-red-50 text-red-700',
@@ -23,7 +23,7 @@ export function StatCard({ label, value, hint, trend, trendLabel, icon, tone = '
           </span>
         )}
       </div>
-      <p className="mt-2 text-2xl font-bold text-navy-900 sm:text-3xl">{value}</p>
+      <p className="mt-2 text-2xl font-bold text-neutral-900 sm:text-3xl">{value}</p>
       <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
         {!isNeutral && (
           <span

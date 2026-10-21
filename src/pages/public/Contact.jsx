@@ -38,19 +38,19 @@ export function Contact() {
               <dl className="mt-4 space-y-3 text-sm">
                 <div>
                   <dt className="text-slate-500">Kantor</dt>
-                  <dd className="font-medium text-navy-900">{COMPANY.address}</dd>
+                  <dd className="font-medium text-neutral-900">{COMPANY.address}</dd>
                 </div>
                 <div>
                   <dt className="text-slate-500">Telepon</dt>
-                  <dd className="font-medium text-navy-900">{COMPANY.phone}</dd>
+                  <dd className="font-medium text-neutral-900">{COMPANY.phone}</dd>
                 </div>
                 <div>
                   <dt className="text-slate-500">Email</dt>
-                  <dd className="font-medium text-navy-900">{COMPANY.email}</dd>
+                  <dd className="font-medium text-neutral-900">{COMPANY.email}</dd>
                 </div>
                 <div>
                   <dt className="text-slate-500">Jam operasional</dt>
-                  <dd className="font-medium text-navy-900">{COMPANY.hours}</dd>
+                  <dd className="font-medium text-neutral-900">{COMPANY.hours}</dd>
                 </div>
               </dl>
 
@@ -106,7 +106,7 @@ export function Contact() {
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
             {FAQS.map((faq) => (
               <details key={faq.question} className="card-pad group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-navy-900">
+                <summary className="cursor-pointer list-none text-base font-semibold text-neutral-900">
                   {faq.question}
                 </summary>
                 <p className="mt-3 text-sm text-slate-600">{faq.answer}</p>

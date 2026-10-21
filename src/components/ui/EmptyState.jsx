@@ -4,7 +4,7 @@ export function EmptyState({ title, description, action, icon = '📭' }) {
       <span className="text-2xl" aria-hidden="true">
         {icon}
       </span>
-      <p className="font-semibold text-navy-900">{title}</p>
+      <p className="font-semibold text-neutral-900">{title}</p>
       {description && <p className="max-w-md text-sm text-slate-500">{description}</p>}
       {action && <div className="mt-2">{action}</div>}
     </div>

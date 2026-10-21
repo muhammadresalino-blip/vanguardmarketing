@@ -72,7 +72,7 @@ export function LeadDetail() {
   return (
     <div className="space-y-5">
       <nav className="text-sm text-slate-500" aria-label="Breadcrumb">
-        <Link to="/admin/leads" className="hover:text-navy-700">
+        <Link to="/admin/leads" className="hover:text-primary-600">
           CRM Lead
         </Link>{' '}
         / <span className="text-slate-600">{lead.name}</span>
@@ -149,21 +149,21 @@ export function LeadDetail() {
             <dl className="mt-4 grid gap-4 sm:grid-cols-2">
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Email</dt>
-                <dd className="text-sm font-medium text-navy-900">{lead.email}</dd>
+                <dd className="text-sm font-medium text-neutral-900">{lead.email}</dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Telepon</dt>
-                <dd className="text-sm font-medium text-navy-900">{lead.phone}</dd>
+                <dd className="text-sm font-medium text-neutral-900">{lead.phone}</dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Sumber lead</dt>
-                <dd className="text-sm font-medium text-navy-900">{lead.source}</dd>
+                <dd className="text-sm font-medium text-neutral-900">{lead.source}</dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Kampanye</dt>
-                <dd className="text-sm font-medium text-navy-900">
+                <dd className="text-sm font-medium text-neutral-900">
                   {campaign ? (
-                    <Link to="/admin/campaigns" className="hover:text-navy-600">
+                    <Link to="/admin/campaigns" className="hover:text-primary-600">
                       {campaign.name}
                     </Link>
                   ) : (
@@ -183,13 +183,13 @@ export function LeadDetail() {
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Estimasi anggaran</dt>
-                <dd className="text-sm font-medium text-navy-900">
+                <dd className="text-sm font-medium text-neutral-900">
                   {formatCompactCurrency(lead.budgetEstimate ?? 0)}
                 </dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Persetujuan data</dt>
-                <dd className="text-sm font-medium text-navy-900">
+                <dd className="text-sm font-medium text-neutral-900">
                   {lead.consent ? 'Disetujui saat submit' : 'Belum ada'}
                 </dd>
               </div>
@@ -260,15 +260,15 @@ export function LeadDetail() {
                 const actor = userMap.get(activity.createdBy)
                 const tone =
                   activity.type === 'status_change'
-                    ? 'bg-teal-500'
+                    ? 'bg-accent-500'
                     : activity.type === 'assignment'
-                      ? 'bg-navy-500'
+                      ? 'bg-primary-500'
                       : 'bg-slate-400'
                 return (
                   <li key={activity.id} className="relative">
                     <span className={`absolute -left-[26px] top-1.5 h-2.5 w-2.5 rounded-full ${tone}`} />
                     <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                      <span className="font-semibold text-navy-800">
+                      <span className="font-semibold text-neutral-800">
                         {ACTIVITY_LABEL[activity.type] ?? activity.type}
                       </span>
                       <span>· {formatDateTime(activity.createdAt)}</span>
@@ -390,21 +390,21 @@ export function LeadDetail() {
               <dl className="mt-4 space-y-3 text-sm">
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Nama deal</dt>
-                  <dd className="font-medium text-navy-900">{leadDeal.dealName}</dd>
+                  <dd className="font-medium text-neutral-900">{leadDeal.dealName}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Nilai</dt>
-                  <dd className="font-medium text-navy-900">{formatCompactCurrency(leadDeal.value)}</dd>
+                  <dd className="font-medium text-neutral-900">{formatCompactCurrency(leadDeal.value)}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Tahap &amp; probabilitas</dt>
-                  <dd className="font-medium text-navy-900">
+                  <dd className="font-medium text-neutral-900">
                     {leadDeal.stage} · {leadDeal.probability}%
                   </dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Perkiraan tutup</dt>
-                  <dd className="font-medium text-navy-900">{formatDate(leadDeal.expectedCloseDate)}</dd>
+                  <dd className="font-medium text-neutral-900">{formatDate(leadDeal.expectedCloseDate)}</dd>
                 </div>
               </dl>
             ) : (
@@ -458,23 +458,23 @@ export function LeadDetail() {
             <dl className="mt-3 space-y-2 text-sm">
               <div className="flex items-center justify-between gap-3">
                 <dt className="text-slate-500">Masuk</dt>
-                <dd className="font-medium text-navy-900">{formatDateTime(lead.createdAt)}</dd>
+                <dd className="font-medium text-neutral-900">{formatDateTime(lead.createdAt)}</dd>
               </div>
               <div className="flex items-center justify-between gap-3">
                 <dt className="text-slate-500">Kontak pertama</dt>
-                <dd className="font-medium text-navy-900">
+                <dd className="font-medium text-neutral-900">
                   {lead.contactedAt ? formatDateTime(lead.contactedAt) : 'Belum'}
                 </dd>
               </div>
               <div className="flex items-center justify-between gap-3">
                 <dt className="text-slate-500">Waktu respons</dt>
-                <dd className={`font-medium ${late ? 'text-accent-600' : 'text-navy-900'}`}>
+                <dd className={`font-medium ${late ? 'text-accent-600' : 'text-neutral-900'}`}>
                   {lead.responseMinutes ? `${lead.responseMinutes} menit` : '-'}
                 </dd>
               </div>
               <div className="flex items-center justify-between gap-3">
                 <dt className="text-slate-500">Terakhir diperbarui</dt>
-                <dd className="font-medium text-navy-900">{formatRelativeTime(lead.updatedAt)}</dd>
+                <dd className="font-medium text-neutral-900">{formatRelativeTime(lead.updatedAt)}</dd>
               </div>
             </dl>
           </section>

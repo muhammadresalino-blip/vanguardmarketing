@@ -179,7 +179,7 @@ export function Dashboard() {
               <tbody>
                 {bySource.map((source) => (
                   <tr key={source.source}>
-                    <td className="font-medium text-navy-900">{source.source}</td>
+                    <td className="font-medium text-neutral-900">{source.source}</td>
                     <td>{formatNumber(source.total)}</td>
                     <td>{formatPercent(source.qualityRate)}</td>
                     <td>{formatNumber(source.won)}</td>
@@ -198,28 +198,28 @@ export function Dashboard() {
           <dl className="mt-4 grid grid-cols-2 gap-4">
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Page view</dt>
-              <dd className="text-xl font-bold text-navy-900">{formatNumber(traffic.pageViews)}</dd>
+              <dd className="text-xl font-bold text-neutral-900">{formatNumber(traffic.pageViews)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Form terkirim</dt>
-              <dd className="text-xl font-bold text-navy-900">{formatNumber(traffic.formSubmits)}</dd>
+              <dd className="text-xl font-bold text-neutral-900">{formatNumber(traffic.formSubmits)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Konversi halaman</dt>
-              <dd className="text-xl font-bold text-teal-700">{formatPercent(traffic.conversionRate)}</dd>
+              <dd className="text-xl font-bold text-accent-600">{formatPercent(traffic.conversionRate)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Pengguna mobile</dt>
-              <dd className="text-xl font-bold text-navy-900">{formatPercent(traffic.mobileShare, 0)}</dd>
+              <dd className="text-xl font-bold text-neutral-900">{formatPercent(traffic.mobileShare, 0)}</dd>
             </div>
           </dl>
 
-          <p className="mt-5 text-sm font-semibold text-navy-900">Halaman paling banyak dilihat</p>
+          <p className="mt-5 text-sm font-semibold text-neutral-900">Halaman paling banyak dilihat</p>
           <ul className="mt-2 space-y-1.5 text-sm text-slate-600">
             {traffic.topPages.slice(0, 5).map((page) => (
               <li key={page.pageUrl} className="flex items-center justify-between gap-3">
                 <span className="truncate font-mono text-xs">{page.pageUrl}</span>
-                <span className="font-semibold text-navy-900">{formatNumber(page.views)}</span>
+                <span className="font-semibold text-neutral-900">{formatNumber(page.views)}</span>
               </li>
             ))}
           </ul>
@@ -229,7 +229,7 @@ export function Dashboard() {
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-base">Kampanye teratas</h2>
             {can('campaigns') && (
-              <Link to="/admin/campaigns" className="btn-ghost btn-sm px-0 text-teal-700">
+              <Link to="/admin/campaigns" className="btn-ghost btn-sm px-0 text-accent-600">
                 Kelola semua →
               </Link>
             )}
@@ -249,7 +249,7 @@ export function Dashboard() {
                 {topCampaigns.map((campaign) => (
                   <tr key={campaign.id}>
                     <td>
-                      <p className="font-medium text-navy-900">{campaign.name}</p>
+                      <p className="font-medium text-neutral-900">{campaign.name}</p>
                       <p className="text-xs text-slate-500">{campaign.channel}</p>
                     </td>
                     <td>{formatNumber(campaign.leads)}</td>
@@ -258,7 +258,7 @@ export function Dashboard() {
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-16 overflow-hidden rounded-full bg-slate-100">
                           <div
-                            className="h-full rounded-full bg-navy-600"
+                            className="h-full rounded-full bg-primary-600"
                             style={{ width: `${Math.min(100, campaign.budgetUsage)}%` }}
                           />
                         </div>
@@ -278,7 +278,7 @@ export function Dashboard() {
         <section className="card-pad">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-base">Lead terbaru</h2>
-            <Link to="/admin/leads" className="btn-ghost btn-sm px-0 text-teal-700">
+            <Link to="/admin/leads" className="btn-ghost btn-sm px-0 text-accent-600">
               Lihat semua lead →
             </Link>
           </div>
@@ -298,7 +298,7 @@ export function Dashboard() {
                 {recentLeads.map((lead) => (
                   <tr key={lead.id}>
                     <td>
-                      <Link to={`/admin/leads/${lead.id}`} className="font-medium text-navy-800 hover:text-navy-600">
+                      <Link to={`/admin/leads/${lead.id}`} className="font-medium text-neutral-800 hover:text-primary-600">
                         {lead.name}
                       </Link>
                       <p className="text-xs text-slate-500">{lead.company}</p>
@@ -341,7 +341,7 @@ export function Dashboard() {
           </ol>
 
           <div className="mt-5 border-t border-slate-100 pt-4">
-            <p className="text-sm font-semibold text-navy-900">Aksi cepat</p>
+            <p className="text-sm font-semibold text-neutral-900">Aksi cepat</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Link to="/admin/tasks" className="btn-outline btn-sm">
                 Tugas ({summary.openTasks})

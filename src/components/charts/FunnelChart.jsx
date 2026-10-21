@@ -14,15 +14,15 @@ export function FunnelChart({ stages }) {
     <ol className="space-y-2">
       {stages.map((stage, index) => {
         const width = Math.max(6, (stage.reached / max) * 100)
-        const tones = ['bg-navy-700', 'bg-navy-500', 'bg-teal-500', 'bg-accent-500', 'bg-emerald-500']
+        const tones = ['bg-primary-600', 'bg-primary-500', 'bg-accent-500', 'bg-accent-500', 'bg-emerald-500']
         return (
           <li key={stage.status} className="rounded-lg border border-slate-200 p-3">
             <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
-              <span className="font-semibold text-navy-900">
+              <span className="font-semibold text-neutral-900">
                 {index + 1}. {LABEL[stage.status] ?? stage.status}
               </span>
               <span className="flex items-center gap-3 text-slate-600">
-                <span className="font-semibold text-navy-900">{formatNumber(stage.reached)}</span>
+                <span className="font-semibold text-neutral-900">{formatNumber(stage.reached)}</span>
                 <span className="text-xs">{formatPercent(stage.conversionFromStart)} dari total</span>
               </span>
             </div>

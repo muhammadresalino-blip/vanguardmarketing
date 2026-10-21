@@ -176,18 +176,18 @@ export function Campaigns() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <div className="card-pad">
           <p className="text-sm text-slate-500">Total anggaran</p>
-          <p className="mt-1 text-2xl font-bold text-navy-900">{formatCompactCurrency(totals.budget)}</p>
+          <p className="mt-1 text-2xl font-bold text-neutral-900">{formatCompactCurrency(totals.budget)}</p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Realisasi belanja</p>
-          <p className="mt-1 text-2xl font-bold text-navy-900">{formatCompactCurrency(totals.spend)}</p>
+          <p className="mt-1 text-2xl font-bold text-neutral-900">{formatCompactCurrency(totals.spend)}</p>
           <p className="mt-1 text-xs text-slate-500">
             {formatPercent(totals.budget ? (totals.spend / totals.budget) * 100 : 0)} dari anggaran
           </p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Lead dari kampanye</p>
-          <p className="mt-1 text-2xl font-bold text-teal-700">{formatNumber(totals.leads)}</p>
+          <p className="mt-1 text-2xl font-bold text-accent-600">{formatNumber(totals.leads)}</p>
         </div>
         <div className="card-pad">
           <p className="text-sm text-slate-500">Biaya per lead (rata-rata)</p>
@@ -227,7 +227,7 @@ export function Campaigns() {
                       <>
                         {' '}
                         ·{' '}
-                        <Link to={`/lp/${campaign.landingPageSlug}`} className="text-teal-700 hover:underline">
+                        <Link to={`/lp/${campaign.landingPageSlug}`} className="text-accent-600 hover:underline">
                           /lp/{campaign.landingPageSlug}
                         </Link>
                       </>
@@ -272,27 +272,27 @@ export function Campaigns() {
               <dl className="mt-5 grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Anggaran</dt>
-                  <dd className="text-sm font-semibold text-navy-900">{formatCompactCurrency(campaign.budget)}</dd>
+                  <dd className="text-sm font-semibold text-neutral-900">{formatCompactCurrency(campaign.budget)}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Realisasi</dt>
-                  <dd className="text-sm font-semibold text-navy-900">{formatCompactCurrency(campaign.spend)}</dd>
+                  <dd className="text-sm font-semibold text-neutral-900">{formatCompactCurrency(campaign.spend)}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Lead</dt>
-                  <dd className="text-sm font-semibold text-navy-900">{formatNumber(campaign.leads)}</dd>
+                  <dd className="text-sm font-semibold text-neutral-900">{formatNumber(campaign.leads)}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Berkualifikasi</dt>
-                  <dd className="text-sm font-semibold text-teal-700">{formatNumber(campaign.qualified)}</dd>
+                  <dd className="text-sm font-semibold text-accent-600">{formatNumber(campaign.qualified)}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Biaya per lead</dt>
-                  <dd className="text-sm font-semibold text-navy-900">{formatCompactCurrency(campaign.cpl)}</dd>
+                  <dd className="text-sm font-semibold text-neutral-900">{formatCompactCurrency(campaign.cpl)}</dd>
                 </div>
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-slate-400">Biaya per lead berkualitas</dt>
-                  <dd className="text-sm font-semibold text-navy-900">
+                  <dd className="text-sm font-semibold text-neutral-900">
                     {formatCompactCurrency(campaign.costPerQualified)}
                   </dd>
                 </div>
@@ -306,7 +306,7 @@ export function Campaigns() {
                 <div className="mt-1.5 h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
                   <div
                     className={`h-full rounded-full ${
-                      campaign.budgetUsage > 95 ? 'bg-red-500' : campaign.budgetUsage > 75 ? 'bg-accent-500' : 'bg-navy-600'
+                      campaign.budgetUsage > 95 ? 'bg-red-500' : campaign.budgetUsage > 75 ? 'bg-accent-500' : 'bg-primary-600'
                     }`}
                     style={{ width: `${Math.min(100, campaign.budgetUsage)}%` }}
                   />

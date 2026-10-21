@@ -15,77 +15,84 @@ import {
   WHY_US,
 } from '../../lib/content.js'
 
-export function Home() {
-  useDocumentTitle(
-    'Platform Digital Marketing Terpadu',
-    COMPANY.tagline,
-  )
+const WHY_COLORS = ['bg-primary-500', 'bg-accent-500', 'bg-secondary-500']
+
+const PIPELINE_MOCK = [
+  { stage: 'Baru', count: 12, tone: 'bg-primary-500' },
+  { stage: 'Kualifikasi', count: 8, tone: 'bg-secondary-500' },
+  { stage: 'Menang', count: 5, tone: 'bg-accent-500' },
+]
+
+export default function Home() {
+  useDocumentTitle(`${COMPANY.name} — Platform Digital Marketing Terpadu`)
   const { posts } = useData()
   const latestPosts = [...posts]
     .filter((post) => post.status === 'published')
     .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
     .slice(0, 3)
-
   const featuredCase = CASE_STUDIES[0]
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-navy-900 text-white">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-teal-500 blur-3xl" />
-          <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-accent-500 blur-3xl" />
-        </div>
+      {/* ===== Hero ============================================== */}
+      <section className="relative overflow-hidden bg-neutral-50">
+        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-primary-200/50 blur-3xl" aria-hidden="true" />
+        <div className="absolute -right-24 top-32 h-96 w-96 rounded-full bg-secondary-200/40 blur-3xl" aria-hidden="true" />
 
-        <div className="container-page relative grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2">
+        <div className="container-page relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:py-28">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-teal-200 ring-1 ring-inset ring-white/20">
-              Platform portal + marketing + CRM
-            </span>
-            <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-              Ubah kunjungan menjadi prospek yang benar-benar ditindaklanjuti
-            </h1>
-            <p className="mt-5 max-w-xl text-base text-navy-100/90">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary-100 bg-primary-50 px-3 py-1 text-xs font-semibold text-primary-600">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-500" aria-hidden="true" />
               {COMPANY.tagline}
+            </span>
+
+            <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
+              Kembangkan bisnis dengan{' '}
+              <span className="text-primary-500">pemasaran yang lebih cerdas</span>
+            </h1>
+
+            <p className="mt-5 max-w-xl text-lg text-neutral-500">
+              Satu alur kerja untuk mengumpulkan prospek, menindaklanjuti penjualan, dan memahami
+              kinerja kampanye — tanpa spreadsheet yang berantakan.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/contact" className="btn-accent">
-                Konsultasi gratis
+              <Link to="/contact" className="btn-primary btn-lg">
+                Mulai gratis
               </Link>
-              <Link to="/lp/konsultasi-digital-marketing" className="btn-outline border-white/30 bg-white/10 text-white hover:bg-white/20">
-                Lihat contoh landing page
+              <Link to="/services" className="btn-outline btn-lg">
+                Lihat cara kerja
               </Link>
             </div>
 
-            <dl className="mt-10 grid grid-cols-2 gap-5 border-t border-white/15 pt-8 sm:grid-cols-4">
-              {STATS.map((stat) => (
+            <dl className="mt-12 grid max-w-md grid-cols-3 gap-6">
+              {STATS.slice(0, 3).map((stat) => (
                 <div key={stat.label}>
-                  <dt className="text-xl font-bold text-teal-200">{stat.value}</dt>
-                  <dd className="mt-1 text-xs text-navy-100/80">{stat.label}</dd>
+                  <dt className="text-2xl font-extrabold text-neutral-900">{stat.value}</dt>
+                  <dd className="mt-1 text-xs text-neutral-500">{stat.label}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div className="rounded-2xl bg-white p-5 shadow-2xl sm:p-6">
+          <div className="card-pad relative bg-white p-6 shadow-[0_20px_60px_rgba(15,23,42,0.10)] sm:p-8">
             <LeadForm
-              headline="Mulai dari satu langkah kecil"
+              compact
+              headline="Minta audit funnel gratis"
               description="Ceritakan kondisi funnel Anda sekarang. Kami balas dengan langkah perbaikan yang bisa dijalankan minggu ini."
               submitLabel="Kirim & minta audit"
-              compact
             />
           </div>
         </div>
 
-        {/* Trusted by */}
-        <div className="relative border-t border-white/10 bg-navy-900/60">
+        {/* Logo pelanggan */}
+        <div className="border-t border-neutral-100 bg-white/70">
           <div className="container-page flex flex-wrap items-center gap-x-8 gap-y-3 py-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-navy-100/60">
-              Dipercaya tim pemasaran
+            <span className="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+              Dipercaya oleh
             </span>
             {CLIENT_LOGOS.map((logo) => (
-              <span key={logo} className="text-sm font-semibold text-navy-100/70">
+              <span key={logo} className="text-sm font-semibold text-neutral-400">
                 {logo}
               </span>
             ))}
@@ -93,34 +100,29 @@ export function Home() {
         </div>
       </section>
 
-      {/* Services */}
+      {/* ===== Fitur ============================================= */}
       <section className="section">
         <div className="container-page">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Layanan</p>
-            <h2 className="mt-3 text-2xl sm:text-3xl">
-              Satu alur kerja dari form masuk sampai laporan penjualan
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Enam modul yang saling terhubung. Mulai dari yang paling dibutuhkan, tambahkan sisanya
-              setelah alur inti stabil.
-            </p>
-          </div>
+          <p className="eyebrow">Dashboard overview</p>
+          <h2 className="mt-3 text-3xl sm:text-4xl">Semua yang dibutuhkan tim marketing</h2>
+          <p className="mt-4 max-w-2xl text-neutral-500">
+            Lima modul yang saling terhubung, dirancang untuk tim kecil yang ingin tumbuh tanpa
+            menambah alat baru.
+          </p>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((service) => (
-              <article key={service.slug} className="card-pad flex flex-col">
-                <span className="text-2xl" aria-hidden="true">
+              <article key={service.slug} className="card card-pad flex flex-col">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl">
                   {service.icon}
                 </span>
-                <h3 className="mt-3 text-lg">{service.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">{service.summary}</p>
-                <p className="mt-4 text-xs text-slate-500">
-                  <span className="font-semibold text-navy-700">Cocok untuk: </span>
-                  {service.forWho}
-                </p>
-                <Link to={`/services#${service.slug}`} className="btn-ghost btn-sm mt-4 self-start px-0 text-teal-700">
-                  Pelajari detail →
+                <h3 className="mt-5 text-lg">{service.title}</h3>
+                <p className="mt-2 flex-1 text-sm text-neutral-500">{service.summary}</p>
+                <Link
+                  to={`/services#${service.slug}`}
+                  className="mt-4 self-start text-sm font-semibold text-primary-500 hover:text-primary-600"
+                >
+                  Selengkapnya →
                 </Link>
               </article>
             ))}
@@ -128,113 +130,121 @@ export function Home() {
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="section bg-slate-50">
-        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-          <div>
-            <p className="eyebrow">Kenapa Vanguard</p>
-            <h2 className="mt-3 text-2xl sm:text-3xl">
-              Pembeda yang kami janjikan — dan buktikan di dashboard
-            </h2>
-            <p className="mt-3 text-slate-600">
-              Kami tidak menjual janji angka. Kami menunjukkan alur kerja yang bisa Anda periksa
-              sendiri: sumber lead, waktu respons, dan nilai deal.
-            </p>
-            <div className="mt-6 rounded-xl border border-navy-100 bg-white p-5">
-              <p className="text-sm font-semibold text-navy-900">Alur inti</p>
-              <p className="mt-2 text-sm text-slate-600">
-                Pengunjung → landing page → form inquiry → lead tersimpan (New) → penugasan otomatis
-                ke sales → notifikasi → status diperbarui → dashboard.
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {WHY_US.map((item) => (
-              <div key={item.title} className="card-pad">
-                <h3 className="text-base">{item.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{item.body}</p>
+      {/* ===== 3 kartu nilai (mockup style guide) ================ */}
+      <section className="section bg-neutral-50">
+        <div className="container-page grid gap-6 lg:grid-cols-3">
+          {WHY_US.slice(0, 3).map((item, index) => (
+            <article
+              key={item.title}
+              className={`card-hover flex flex-col justify-between rounded-2xl p-8 text-white ${WHY_COLORS[index]}`}
+            >
+              <div>
+                <h3 className="text-xl text-white">{item.title}</h3>
+                <p className="mt-3 text-sm text-white/85">{item.body}</p>
               </div>
-            ))}
-          </div>
+              <Link
+                to="/contact"
+                className="mt-8 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25"
+                aria-label={item.title}
+              >
+                →
+              </Link>
+            </article>
+          ))}
         </div>
       </section>
 
-      {/* Process */}
+      {/* ===== Proses ============================================ */}
       <section className="section">
         <div className="container-page">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Cara kerja</p>
-            <h2 className="mt-3 text-2xl sm:text-3xl">Empat tahap, dua sampai tiga minggu</h2>
-          </div>
-          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <p className="eyebrow">Cara kerja</p>
+          <h2 className="mt-3 text-3xl sm:text-4xl">Empat tahap, dua sampai tiga minggu</h2>
+
+          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESS_STEPS.map((step) => (
-              <li key={step.step} className="card-pad">
-                <span className="text-sm font-bold text-accent-500">{step.step}</span>
-                <h3 className="mt-2 text-base">{step.title}</h3>
-                <p className="mt-2 text-sm text-slate-600">{step.body}</p>
+              <li key={step.step} className="card card-pad">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-500 text-sm font-bold text-white">
+                  {step.step}
+                </span>
+                <h3 className="mt-4 text-base">{step.title}</h3>
+                <p className="mt-2 text-sm text-neutral-500">{step.body}</p>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* Case study */}
-      <section className="section bg-navy-900 text-white">
-        <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
+      {/* ===== Section gelap: studi kasus + kanban =============== */}
+      <section className="section bg-neutral-900 text-white">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-2">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">Studi kasus</p>
-            <h2 className="mt-3 text-2xl text-white sm:text-3xl">{featuredCase.headline}</h2>
-            <p className="mt-3 text-sm text-navy-100/85">{featuredCase.summary}</p>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {featuredCase.channels.map((channel) => (
-                <span
-                  key={channel}
-                  className="rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-navy-100"
-                >
-                  {channel}
-                </span>
-              ))}
-            </div>
-            <Link to="/case-studies" className="btn-teal mt-7">
-              Lihat semua studi kasus
-            </Link>
-          </div>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-400">
+              Studi kasus
+            </p>
+            <h2 className="mt-3 text-3xl text-white sm:text-4xl">{featuredCase.headline}</h2>
+            <p className="mt-4 text-sm text-neutral-300">{featuredCase.summary}</p>
 
-          <div className="rounded-2xl bg-white/5 p-6 ring-1 ring-inset ring-white/15">
-            <ul className="space-y-5">
-              {featuredCase.metrics.map((metric) => (
-                <li key={metric.label}>
-                  <p className="text-xs uppercase tracking-wide text-navy-100/60">{metric.label}</p>
-                  <p className="mt-1 flex flex-wrap items-baseline gap-2 text-lg font-bold">
-                    <span className="text-navy-100/60 line-through">{metric.before}</span>
-                    <span className="text-teal-300">{metric.after}</span>
+            <ul className="mt-8 grid grid-cols-3 gap-4">
+              {featuredCase.metrics.slice(0, 3).map((metric) => (
+                <li key={metric.label} className="rounded-xl bg-white/5 p-4">
+                  <p className="text-[11px] uppercase tracking-wide text-neutral-400">
+                    {metric.label}
+                  </p>
+                  <p className="mt-2 text-sm">
+                    <span className="text-neutral-500 line-through">{metric.before}</span>{' '}
+                    <span className="font-bold text-accent-400">{metric.after}</span>
                   </p>
                 </li>
               ))}
             </ul>
-            <blockquote className="mt-6 border-t border-white/10 pt-5 text-sm italic text-navy-100/85">
+
+            <blockquote className="mt-8 border-l-2 border-primary-500 pl-4 text-sm italic text-neutral-300">
               “{featuredCase.quote}”
-              <footer className="mt-2 not-italic text-xs text-navy-100/60">— {featuredCase.author}</footer>
+              <footer className="mt-2 not-italic text-xs text-neutral-400">
+                {featuredCase.author}
+              </footer>
             </blockquote>
+
+            <Link to="/case-studies" className="btn-primary mt-8">
+              Lihat semua studi kasus
+            </Link>
+          </div>
+
+          {/* Mock pipeline */}
+          <div className="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <p className="text-sm font-semibold text-neutral-300">Sales Pipeline</p>
+            <div className="mt-5 grid grid-cols-3 gap-4">
+              {PIPELINE_MOCK.map((column) => (
+                <div key={column.stage} className="rounded-xl bg-neutral-900/70 p-3 ring-1 ring-white/5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold text-neutral-300">{column.stage}</span>
+                    <span className="text-xs text-neutral-500">{column.count}</span>
+                  </div>
+                  <div className={`mt-3 h-1.5 w-10 rounded-full ${column.tone}`} aria-hidden="true" />
+                  <div className="mt-3 space-y-2">
+                    <div className="h-12 rounded-lg bg-white/5" />
+                    <div className="h-12 rounded-lg bg-white/5" />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* ===== Testimoni ========================================= */}
       <section className="section">
         <div className="container-page">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Testimoni</p>
-            <h2 className="mt-3 text-2xl sm:text-3xl">Kata pengguna setelah 90 hari</h2>
-          </div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {TESTIMONIALS.map((item) => (
-              <figure key={item.name} className="card-pad flex flex-col">
-                <blockquote className="flex-1 text-sm text-slate-600">“{item.quote}”</blockquote>
-                <figcaption className="mt-4 border-t border-slate-100 pt-4">
-                  <p className="text-sm font-semibold text-navy-900">{item.name}</p>
-                  <p className="text-xs text-slate-500">{item.role}</p>
+          <p className="eyebrow">Testimoni</p>
+          <h2 className="mt-3 text-3xl sm:text-4xl">Kata pengguna setelah 90 hari</h2>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {TESTIMONIALS.slice(0, 3).map((item) => (
+              <figure key={item.name} className="card card-pad flex flex-col">
+                <blockquote className="flex-1 text-sm text-neutral-600">“{item.quote}”</blockquote>
+                <figcaption className="mt-5 border-t border-neutral-100 pt-4">
+                  <p className="text-sm font-semibold text-neutral-900">{item.name}</p>
+                  <p className="text-xs text-neutral-500">{item.role}</p>
                 </figcaption>
               </figure>
             ))}
@@ -242,77 +252,74 @@ export function Home() {
         </div>
       </section>
 
-      {/* Blog preview */}
-      <section className="section bg-slate-50">
-        <div className="container-page">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="eyebrow">Blog</p>
-              <h2 className="mt-3 text-2xl sm:text-3xl">Panduan praktis untuk tim kecil</h2>
-            </div>
-            <Link to="/blog" className="btn-outline btn-sm">
-              Semua artikel
-            </Link>
-          </div>
-
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {latestPosts.map((post) => (
-              <article key={post.id} className="card-pad flex flex-col">
-                <Badge tone="teal">{post.category}</Badge>
-                <h3 className="mt-3 text-base">
-                  <Link to={`/blog/${post.slug}`} className="hover:text-navy-700">
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="mt-2 flex-1 text-sm text-slate-600">{post.excerpt}</p>
-                <p className="mt-4 text-xs text-slate-500">
-                  {formatDate(post.publishedAt)} · {post.readMinutes} menit baca
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="section">
-        <div className="container-page grid gap-10 rounded-2xl border border-navy-100 bg-gradient-to-br from-navy-50 to-white p-6 sm:p-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h2 className="text-2xl sm:text-3xl">Siap menata lead Anda minggu ini?</h2>
-            <p className="mt-3 text-slate-600">
-              Kami mulai dari yang paling sederhana: satu form, satu daftar lead, satu target waktu
-              respons. Setelah itu baru kampanye dan pelaporan.
-            </p>
-            <ul className="mt-5 space-y-2 text-sm text-slate-600">
-              <li>✓ Audit funnel gratis, tanpa komitmen kontrak</li>
-              <li>✓ Rencana perbaikan 30 hari yang bisa dijalankan tim sendiri</li>
-              <li>✓ Contoh dashboard dan laporan yang akan Anda terima</li>
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href={`https://wa.me/${COMPANY.whatsapp}`}
-                className="btn-teal"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Chat WhatsApp
-              </a>
-              <Link to="/services" className="btn-outline">
-                Lihat layanan
+      {/* ===== Blog ============================================== */}
+      {latestPosts.length > 0 && (
+        <section className="section bg-neutral-50">
+          <div className="container-page">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="eyebrow">Blog</p>
+                <h2 className="mt-3 text-3xl sm:text-4xl">Panduan praktis untuk tim kecil</h2>
+              </div>
+              <Link to="/blog" className="btn-outline">
+                Semua artikel
               </Link>
             </div>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {latestPosts.map((post) => (
+                <article key={post.id} className="card card-pad flex flex-col">
+                  <Badge tone="teal">{post.category}</Badge>
+                  <h3 className="mt-4 text-lg">
+                    <Link to={`/blog/${post.slug}`} className="hover:text-primary-500">
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-neutral-500">{post.excerpt}</p>
+                  <p className="mt-4 text-xs text-neutral-400">
+                    {formatDate(post.publishedAt)} · {post.readMinutes} menit baca
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ===== CTA + form ======================================= */}
+      <section className="section">
+        <div className="container-page grid items-start gap-10 lg:grid-cols-2">
+          <div className="pt-4">
+            <h2 className="text-3xl sm:text-4xl">Siap menata lead Anda minggu ini?</h2>
+            <p className="mt-4 max-w-lg text-neutral-500">
+              Kirim pesan singkat tentang bisnis Anda. Kami balas kurang dari satu jam kerja
+              dengan langkah konkret — bukan proposal tebal.
+            </p>
+            <ul className="mt-8 space-y-3 text-sm text-neutral-600">
+              <li className="flex items-center gap-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-100 text-xs text-accent-600">✓</span>
+                Respons pertama rata-rata 43 menit
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-100 text-xs text-accent-600">✓</span>
+                Audit funnel singkat, tanpa biaya
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-100 text-xs text-accent-600">✓</span>
+                Rencana 30 hari yang bisa langsung dijalankan
+              </li>
+            </ul>
           </div>
 
-          <LeadForm
-            headline="Minta audit funnel"
-            description="Satu formulir untuk semua kanal. Kami catat sumber kunjungan Anda secara otomatis."
-            submitLabel="Kirim permintaan audit"
-            compact
-          />
+          <div className="card-pad bg-white shadow-[0_20px_60px_rgba(15,23,42,0.08)] sm:p-8">
+            <LeadForm
+              headline="Mulai dari satu langkah kecil"
+              description="Ceritakan kondisi funnel Anda sekarang. Kami balas dengan langkah perbaikan yang bisa dijalankan minggu ini."
+              submitLabel="Kirim & minta audit"
+            />
+          </div>
         </div>
       </section>
     </>
   )
 }
-
-export default Home

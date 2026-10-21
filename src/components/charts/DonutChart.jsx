@@ -1,6 +1,6 @@
 import { formatNumber, formatPercent } from '../../lib/format.js'
 
-const COLORS = ['#1e3a8a', '#0d9488', '#f97316', '#0ea5e9', '#7c3aed', '#10b981', '#ef4444', '#64748b']
+const COLORS = ['#3882F6', '#10B981', '#6366F1', '#0ea5e9', '#7c3aed', '#10b981', '#ef4444', '#64748b']
 
 // Donut chart SVG untuk komposisi (mis. lead per kanal atau per status).
 export function DonutChart({ data, labelKey = 'label', valueKey = 'value', centerLabel = 'Total' }) {
@@ -48,7 +48,7 @@ export function DonutChart({ data, labelKey = 'label', valueKey = 'value', cente
         <text x="80" y="74" textAnchor="middle" className="fill-slate-400 text-[10px]">
           {centerLabel}
         </text>
-        <text x="80" y="92" textAnchor="middle" className="fill-navy-900 text-[16px] font-bold">
+        <text x="80" y="92" textAnchor="middle" className="fill-neutral-900 text-[16px] font-bold">
           {formatNumber(total)}
         </text>
       </svg>
@@ -60,7 +60,7 @@ export function DonutChart({ data, labelKey = 'label', valueKey = 'value', cente
               <span className="h-2.5 w-2.5 shrink-0 rounded-sm" style={{ background: segment.color }} />
               <span className="truncate text-slate-600">{segment[labelKey]}</span>
             </span>
-            <span className="shrink-0 font-semibold text-navy-900">
+            <span className="shrink-0 font-semibold text-neutral-900">
               {formatNumber(segment[valueKey])}{' '}
               <span className="font-normal text-slate-400">({formatPercent(segment.fraction * 100, 0)})</span>
             </span>

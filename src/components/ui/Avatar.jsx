@@ -8,8 +8,8 @@ const SIZES = {
 
 export function Avatar({ name, size = 'md', tone = 'navy', className = '' }) {
   const tones = {
-    navy: 'bg-navy-100 text-navy-700',
-    teal: 'bg-teal-100 text-teal-700',
+    navy: 'bg-neutral-200 text-primary-600',
+    teal: 'bg-accent-100 text-accent-600',
     accent: 'bg-accent-100 text-accent-700',
   }
   return (

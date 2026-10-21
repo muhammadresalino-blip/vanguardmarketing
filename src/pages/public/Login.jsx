@@ -100,13 +100,13 @@ export function Login() {
       </div>
 
       {/* Demo accounts */}
-      <div className="hidden bg-navy-900 px-12 py-12 text-white lg:flex lg:flex-col lg:justify-center">
+      <div className="hidden bg-neutral-900 px-12 py-12 text-white lg:flex lg:flex-col lg:justify-center">
         <div className="max-w-lg">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-teal-300">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent-300">
             Akun demo
           </p>
           <h2 className="mt-3 text-2xl text-white">Lima peran pengguna</h2>
-          <p className="mt-3 text-sm text-navy-100/80">
+          <p className="mt-3 text-sm text-neutral-200/80">
             Setiap peran melihat menu dan data yang berbeda, sesuai kebutuhan role-based access.
             Klik salah satu untuk mengisi formulir otomatis.
           </p>
@@ -125,15 +125,15 @@ export function Login() {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-sm font-semibold text-white">{account.roleLabel}</span>
-                    <span className="font-mono text-xs text-teal-200">{account.email}</span>
+                    <span className="font-mono text-xs text-accent-200">{account.email}</span>
                   </div>
-                  <p className="mt-1 text-xs text-navy-100/70">{account.description}</p>
+                  <p className="mt-1 text-xs text-neutral-200/70">{account.description}</p>
                 </button>
               </li>
             ))}
           </ul>
 
-          <p className="mt-6 text-xs text-navy-100/60">
+          <p className="mt-6 text-xs text-neutral-200/60">
             Saat backend JWT/NextAuth dipasang, cukup ganti fungsi login di AuthContext tanpa
             mengubah halaman ini.
           </p>

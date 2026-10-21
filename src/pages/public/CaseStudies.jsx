@@ -42,7 +42,7 @@ export function CaseStudies() {
                     <dt className="text-xs uppercase tracking-wide text-slate-500">{metric.label}</dt>
                     <dd className="mt-2 flex items-baseline gap-2 text-lg font-bold">
                       <span className="text-slate-400 line-through">{metric.before}</span>
-                      <span className="text-teal-700">{metric.after}</span>
+                      <span className="text-accent-600">{metric.after}</span>
                     </dd>
                   </div>
                 ))}
@@ -50,7 +50,7 @@ export function CaseStudies() {
 
               <div className="mt-6 grid gap-5 lg:grid-cols-2">
                 <div>
-                  <p className="text-sm font-semibold text-navy-900">Kanal yang dipakai</p>
+                  <p className="text-sm font-semibold text-neutral-900">Kanal yang dipakai</p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {study.channels.map((channel) => (
                       <span
@@ -66,7 +66,7 @@ export function CaseStudies() {
                   </p>
                 </div>
 
-                <blockquote className="rounded-xl border-l-4 border-teal-500 bg-teal-50/60 p-5 text-sm text-slate-700">
+                <blockquote className="rounded-xl border-l-4 border-accent-500 bg-accent-50/60 p-5 text-sm text-slate-700">
                   “{study.quote}”
                   <footer className="mt-2 text-xs text-slate-500">{study.author}</footer>
                 </blockquote>
@@ -76,11 +76,11 @@ export function CaseStudies() {
         </div>
       </section>
 
-      <section className="section bg-navy-900">
+      <section className="section bg-neutral-900">
         <div className="container-page flex flex-wrap items-center justify-between gap-6 text-white">
           <div>
             <h2 className="text-2xl text-white">Ingin hasil serupa diukur di bisnis Anda?</h2>
-            <p className="mt-2 text-navy-100/85">
+            <p className="mt-2 text-neutral-200/85">
               Kami mulai dengan menetapkan baseline: sumber lead, waktu respons, dan nilai deal.
             </p>
           </div>

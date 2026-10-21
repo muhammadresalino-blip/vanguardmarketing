@@ -134,7 +134,7 @@ export function Content() {
             onClick={() => setTab(item.value)}
             className={`rounded-full px-3.5 py-1.5 text-sm font-semibold ${
               tab === item.value
-                ? 'bg-navy-700 text-white'
+                ? 'bg-primary-600 text-white'
                 : 'border border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
             }`}
           >
@@ -169,7 +169,7 @@ export function Content() {
                     .map((post) => (
                       <tr key={post.id}>
                         <td>
-                          <p className="font-medium text-navy-900">{post.title}</p>
+                          <p className="font-medium text-neutral-900">{post.title}</p>
                           <p className="text-xs text-slate-500">/blog/{post.slug}</p>
                         </td>
                         <td className="text-sm">{post.category}</td>
@@ -228,7 +228,7 @@ export function Content() {
                 {pages.map((page) => (
                   <tr key={page.id}>
                     <td>
-                      <p className="font-medium text-navy-900">{page.title}</p>
+                      <p className="font-medium text-neutral-900">{page.title}</p>
                       <p className="text-xs text-slate-500">{page.excerpt}</p>
                     </td>
                     <td className="font-mono text-xs text-slate-600">/{page.slug}</td>
@@ -277,7 +277,7 @@ export function Content() {
                       </div>
                       <p className="mt-1 text-xs text-slate-500">
                         Kampanye: {campaign?.name ?? '—'} ·{' '}
-                        <Link to={`/lp/${page.slug}`} className="text-teal-700 hover:underline">
+                        <Link to={`/lp/${page.slug}`} className="text-accent-600 hover:underline">
                           /lp/{page.slug}
                         </Link>
                       </p>

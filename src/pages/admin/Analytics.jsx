@@ -124,7 +124,7 @@ export function Analytics() {
                 onClick={() => setRange(item.value)}
                 className={`rounded-full px-3 py-1.5 text-sm font-semibold ${
                   range === item.value
-                    ? 'bg-navy-700 text-white'
+                    ? 'bg-primary-600 text-white'
                     : 'border border-slate-200 bg-white text-slate-600'
                 }`}
               >
@@ -185,11 +185,11 @@ export function Analytics() {
           <dl className="mt-5 grid gap-4 sm:grid-cols-3">
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Nilai pipeline terbuka</dt>
-              <dd className="text-lg font-bold text-navy-900">{formatCompactCurrency(summary.pipelineValue)}</dd>
+              <dd className="text-lg font-bold text-neutral-900">{formatCompactCurrency(summary.pipelineValue)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Proyeksi berbobot</dt>
-              <dd className="text-lg font-bold text-teal-700">{formatCompactCurrency(summary.weightedForecast)}</dd>
+              <dd className="text-lg font-bold text-accent-600">{formatCompactCurrency(summary.weightedForecast)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Nilai menang</dt>
@@ -203,25 +203,25 @@ export function Analytics() {
           <dl className="mt-4 grid grid-cols-2 gap-4">
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Page view</dt>
-              <dd className="text-xl font-bold text-navy-900">{formatNumber(traffic.pageViews)}</dd>
+              <dd className="text-xl font-bold text-neutral-900">{formatNumber(traffic.pageViews)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Form terkirim</dt>
-              <dd className="text-xl font-bold text-navy-900">{formatNumber(traffic.formSubmits)}</dd>
+              <dd className="text-xl font-bold text-neutral-900">{formatNumber(traffic.formSubmits)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Konversi halaman</dt>
-              <dd className="text-xl font-bold text-teal-700">{formatPercent(traffic.conversionRate)}</dd>
+              <dd className="text-xl font-bold text-accent-600">{formatPercent(traffic.conversionRate)}</dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-slate-400">Durasi sesi rata-rata</dt>
-              <dd className="text-xl font-bold text-navy-900">
+              <dd className="text-xl font-bold text-neutral-900">
                 {traffic.avgSessionMinutes.toFixed(1)} menit
               </dd>
             </div>
           </dl>
 
-          <p className="mt-5 text-sm font-semibold text-navy-900">Konversi per halaman</p>
+          <p className="mt-5 text-sm font-semibold text-neutral-900">Konversi per halaman</p>
           <div className="mt-2">
             <BarChart
               data={traffic.topPages.map((page) => ({ label: page.pageUrl, total: page.views }))}
@@ -259,7 +259,7 @@ export function Analytics() {
               <tbody>
                 {sourceStats.map((source) => (
                   <tr key={source.source}>
-                    <td className="font-medium text-navy-900">{source.source}</td>
+                    <td className="font-medium text-neutral-900">{source.source}</td>
                     <td>{formatNumber(source.total)}</td>
                     <td>{formatNumber(source.qualified)}</td>
                     <td>
@@ -293,7 +293,7 @@ export function Analytics() {
               <tbody>
                 {channelStats.map((channel) => (
                   <tr key={channel.channel}>
-                    <td className="font-medium text-navy-900">
+                    <td className="font-medium text-neutral-900">
                       {CHANNEL_LABEL[channel.channel] ?? channel.channel}
                     </td>
                     <td>{formatNumber(channel.total)}</td>
@@ -335,7 +335,7 @@ export function Analytics() {
                 {roas.map((campaign) => (
                   <tr key={campaign.id}>
                     <td>
-                      <p className="font-medium text-navy-900">{campaign.name}</p>
+                      <p className="font-medium text-neutral-900">{campaign.name}</p>
                       <p className="text-xs text-slate-500">
                         {CHANNEL_LABEL[campaign.channel] ?? campaign.channel}
                       </p>
@@ -366,23 +366,23 @@ export function Analytics() {
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-center justify-between gap-3">
               <span className="text-slate-600">Lead tanpa sumber tercatat</span>
-              <span className="font-semibold text-navy-900">
+              <span className="font-semibold text-neutral-900">
                 {leads.filter((lead) => !lead.source).length}
               </span>
             </li>
             <li className="flex items-center justify-between gap-3">
               <span className="text-slate-600">Kandidat duplikat (email sama)</span>
-              <span className="font-semibold text-navy-900">{duplicateCandidates.length}</span>
+              <span className="font-semibold text-neutral-900">{duplicateCandidates.length}</span>
             </li>
             <li className="flex items-center justify-between gap-3">
               <span className="text-slate-600">Lead tanpa pemilik</span>
-              <span className="font-semibold text-navy-900">
+              <span className="font-semibold text-neutral-900">
                 {leads.filter((lead) => !lead.assignedTo).length}
               </span>
             </li>
             <li className="flex items-center justify-between gap-3">
               <span className="text-slate-600">Lead belum dihubungi (status New)</span>
-              <span className="font-semibold text-navy-900">{summary.statusCounts.new}</span>
+              <span className="font-semibold text-neutral-900">{summary.statusCounts.new}</span>
             </li>
             <li className="flex items-center justify-between gap-3">
               <span className="text-slate-600">Tugas melewati tenggat</span>

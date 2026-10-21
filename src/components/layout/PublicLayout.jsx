@@ -12,12 +12,12 @@ function Header() {
 
   const linkClass = ({ isActive }) =>
     `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-      isActive ? 'text-navy-800' : 'text-slate-600 hover:text-navy-800'
+      isActive ? 'text-neutral-800' : 'text-slate-600 hover:text-neutral-800'
     }`
 
   return (
-    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-30 border-b border-neutral-100 bg-white/90 backdrop-blur">
+      <div className="container-page flex h-[72px] items-center justify-between gap-4">
         <Logo />
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigasi utama">
@@ -32,9 +32,9 @@ function Header() {
           <Link to="/admin/login" className="btn-ghost btn-sm">
             Login tim
           </Link>
-          <Link to="/contact" className="btn-accent btn-sm">
-            Konsultasi gratis
-          </Link>
+          <Link to="/contact" className="btn-primary btn-sm">
+          Konsultasi Gratis
+        </Link>
         </div>
 
         <button
@@ -59,7 +59,7 @@ function Header() {
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `rounded-md px-3 py-2.5 text-sm font-medium ${
-                    isActive ? 'bg-navy-50 text-navy-800' : 'text-slate-600'
+                    isActive ? 'bg-primary-50 text-neutral-800' : 'text-slate-600'
                   }`
                 }
               >
@@ -67,7 +67,7 @@ function Header() {
               </NavLink>
             ))}
             <div className="mt-2 flex flex-col gap-2">
-              <Link to="/contact" className="btn-accent" onClick={() => setOpen(false)}>
+              <Link to="/contact" className="btn-primary" onClick={() => setOpen(false)}>
                 Konsultasi gratis
               </Link>
               <Link to="/admin/login" className="btn-outline" onClick={() => setOpen(false)}>
@@ -89,12 +89,12 @@ function Header() {
 
 function Footer() {
   return (
-    <footer className="mt-16 bg-navy-900 text-navy-100">
+    <footer className="mt-16 bg-neutral-900 text-neutral-200">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <Logo inverted />
-          <p className="mt-4 max-w-md text-sm text-navy-100/80">{COMPANY.tagline}</p>
-          <div className="mt-5 space-y-1 text-sm text-navy-100/80">
+          <p className="mt-4 max-w-md text-sm text-neutral-200/80">{COMPANY.tagline}</p>
+          <div className="mt-5 space-y-1 text-sm text-neutral-200/80">
             <p>{COMPANY.address}</p>
             <p>{COMPANY.phone}</p>
             <p>{COMPANY.email}</p>
@@ -104,7 +104,7 @@ function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold text-white">Portal</h3>
-          <ul className="mt-4 space-y-2 text-sm text-navy-100/80">
+          <ul className="mt-4 space-y-2 text-sm text-neutral-200/80">
             {NAV_LINKS.map((link) => (
               <li key={link.to}>
                 <Link to={link.to} className="hover:text-white">
@@ -122,7 +122,7 @@ function Footer() {
 
         <div>
           <h3 className="text-sm font-semibold text-white">Terhubung</h3>
-          <ul className="mt-4 space-y-2 text-sm text-navy-100/80">
+          <ul className="mt-4 space-y-2 text-sm text-neutral-200/80">
             <li>
               <a href={`https://wa.me/${COMPANY.whatsapp}`} className="hover:text-white" target="_blank" rel="noreferrer">
                 WhatsApp
@@ -152,7 +152,7 @@ function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-2 py-5 text-xs text-navy-100/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-page flex flex-col gap-2 py-5 text-xs text-neutral-200/70 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {CURRENT_YEAR} {COMPANY.name}. Seluruh hak cipta dilindungi.
           </p>

@@ -5,8 +5,8 @@ import { formatNumber } from '../../lib/format.js'
 export function BarChart({ data, valueKey = 'total', labelKey = 'label', suffix = '', tone = 'navy' }) {
   const max = Math.max(1, ...data.map((item) => item[valueKey]))
   const tones = {
-    navy: 'bg-navy-600',
-    teal: 'bg-teal-500',
+    navy: 'bg-primary-600',
+    teal: 'bg-accent-500',
     accent: 'bg-accent-500',
     sky: 'bg-sky-500',
   }
@@ -19,7 +19,7 @@ export function BarChart({ data, valueKey = 'total', labelKey = 'label', suffix 
           <li key={item[labelKey]}>
             <div className="mb-1 flex items-baseline justify-between gap-3 text-sm">
               <span className="truncate font-medium text-slate-600">{item[labelKey]}</span>
-              <span className="shrink-0 font-semibold text-navy-900">
+              <span className="shrink-0 font-semibold text-neutral-900">
                 {formatNumber(item[valueKey])}
                 {suffix}
               </span>

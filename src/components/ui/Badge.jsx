@@ -1,7 +1,7 @@
 const TONES = {
-  navy: 'bg-navy-50 text-navy-700 ring-navy-200',
+  navy: 'bg-primary-50 text-primary-600 ring-neutral-200',
   sky: 'bg-sky-50 text-sky-700 ring-sky-200',
-  teal: 'bg-teal-50 text-teal-700 ring-teal-200',
+  teal: 'bg-accent-50 text-accent-600 ring-accent-200',
   accent: 'bg-accent-50 text-accent-700 ring-accent-200',
   green: 'bg-emerald-50 text-emerald-700 ring-emerald-200',
   red: 'bg-red-50 text-red-700 ring-red-200',

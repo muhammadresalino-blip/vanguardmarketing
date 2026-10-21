@@ -42,7 +42,7 @@ export function Services() {
             >
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-navy-50 text-xl" aria-hidden="true">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50 text-xl" aria-hidden="true">
                     {service.icon}
                   </span>
                   <div>
@@ -54,17 +54,17 @@ export function Services() {
                 </div>
                 <p className="mt-4 text-slate-600">{service.summary}</p>
                 <p className="mt-4 rounded-lg bg-slate-50 p-4 text-sm text-slate-600">
-                  <span className="font-semibold text-navy-800">Untuk siapa: </span>
+                  <span className="font-semibold text-neutral-800">Untuk siapa: </span>
                   {service.forWho}
                 </p>
               </div>
 
               <div className="mt-6 lg:mt-0">
-                <p className="text-sm font-semibold text-navy-900">Yang Anda dapatkan</p>
+                <p className="text-sm font-semibold text-neutral-900">Yang Anda dapatkan</p>
                 <ul className="mt-3 space-y-2 text-sm text-slate-600">
                   {service.points.map((point) => (
                     <li key={point} className="flex gap-2">
-                      <span className="mt-0.5 text-teal-600" aria-hidden="true">
+                      <span className="mt-0.5 text-accent-600" aria-hidden="true">
                         ✓
                       </span>
                       {point}
@@ -115,15 +115,15 @@ export function Services() {
         </div>
       </section>
 
-      <section className="section bg-navy-900">
+      <section className="section bg-neutral-900">
         <div className="container-page grid gap-10 lg:grid-cols-2 lg:items-center">
           <div className="text-white">
             <h2 className="text-2xl text-white sm:text-3xl">Butuh rekomendasi modul mana dulu?</h2>
-            <p className="mt-3 text-navy-100/85">
+            <p className="mt-3 text-neutral-200/85">
               Isi formulir singkat ini. Kami akan menunjukkan urutan implementasi yang paling masuk
               akal untuk kondisi tim Anda.
             </p>
-            <p className="mt-5 text-sm text-navy-100/70">
+            <p className="mt-5 text-sm text-neutral-200/70">
               Rata-rata kami membalas di bawah satu jam pada hari kerja.
             </p>
           </div>

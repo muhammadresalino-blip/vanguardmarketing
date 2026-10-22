@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import ServiceIcon from '../../components/brand/ServiceIcon.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import { useData } from '../../context/DataContext.jsx'
 import LeadForm from '../../components/leads/LeadForm.jsx'
@@ -116,8 +117,8 @@ export default function Home() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((service) => (
               <article key={service.slug} className="card card-pad flex flex-col">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-2xl">
-                  {service.icon}
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50">
+                  <ServiceIcon name={service.icon} className="h-6 w-6" />
                 </span>
                 <h3 className="mt-5 text-lg">{service.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-neutral-500">{service.summary}</p>

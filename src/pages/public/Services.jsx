@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
+import ServiceIcon from '../../components/brand/ServiceIcon.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import LeadForm from '../../components/leads/LeadForm.jsx'
 import { PROCESS_STEPS, SERVICES, WHY_US } from '../../lib/content.js'
@@ -44,8 +45,8 @@ export function Services() {
             >
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50 text-xl" aria-hidden="true">
-                    {service.icon}
+                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-primary-50" aria-hidden="true">
+                    <ServiceIcon name={service.icon} className="h-5 w-5" />
                   </span>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">

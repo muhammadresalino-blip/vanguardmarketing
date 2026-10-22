@@ -27,7 +27,7 @@ export const NAV_LINKS = [
 export const SERVICES = [
   {
     slug: 'lead-generation',
-    icon: '🎯',
+    icon: 'target',
     title: 'Lead Generation Terukur',
     summary:
       'Landing page yang fokus konversi, form yang tidak menyulitkan, dan penugasan lead otomatis ke sales.',
@@ -40,7 +40,7 @@ export const SERVICES = [
   },
   {
     slug: 'campaign-management',
-    icon: '📈',
+    icon: 'campaign',
     title: 'Manajemen Kampanye Multi-Kanal',
     summary:
       'Kelola Google Ads, Meta Ads, email, dan konten organik dari satu tempat, lengkap dengan anggaran dan realisasi.',
@@ -53,7 +53,7 @@ export const SERVICES = [
   },
   {
     slug: 'utm-attribution',
-    icon: '🔗',
+    icon: 'link',
     title: 'Pelacakan UTM & Atribusi Sumber',
     summary:
       'Setiap lead menyimpan utm_source, utm_medium, dan utm_campaign sehingga kualitas per kanal bisa dibandingkan.',
@@ -66,7 +66,7 @@ export const SERVICES = [
   },
   {
     slug: 'crm-pipeline',
-    icon: '🗂️',
+    icon: 'pipeline',
     title: 'CRM & Pipeline Penjualan',
     summary:
       'Database prospek dengan tahap New sampai Won, riwayat aktivitas, tugas follow-up, dan nilai deal.',
@@ -79,7 +79,7 @@ export const SERVICES = [
   },
   {
     slug: 'email-automation',
-    icon: '✉️',
+    icon: 'email',
     title: 'Automasi Email Dasar',
     summary:
       'Konfirmasi otomatis ke prospek, notifikasi internal ke sales, dan pengingat follow-up yang terkendali.',
@@ -92,7 +92,7 @@ export const SERVICES = [
   },
   {
     slug: 'analytics-reporting',
-    icon: '📊',
+    icon: 'analytics',
     title: 'Analytics & Pelaporan',
     summary:
       'Dashboard operasional: total lead, kualitas per sumber, biaya per lead, hingga laporan funnel penjualan.',

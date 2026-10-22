@@ -614,3 +614,135 @@ export async function logEvent(event) {
   await writeRecords('events', [item])
   return item.id
 }
+
+export function publicStats(data) {
+  const leads = data.leads ?? []
+  const deals = data.deals ?? []
+  const campaigns = data.campaigns ?? []
+
+  const statusOrder = ['new', 'contacted', 'qualified', 'proposal', 'won']
+  const counts = Object.fromEntries(statusOrder.map((s) => [s, 0]))
+  for (const lead of leads) {
+    if (lead.status in counts) counts[lead.status] += 1
+  }
+
+  const openStages = ['qualified', 'proposal', 'won']
+  const dealValueByStage = Object.fromEntries(
+    openStages.map((stage) => {
+      const inStage = deals.filter((d) => d.stage === stage)
+      return [stage, { count: inStage.length, value: inStage.reduce((sum, d) => sum + (d.value ?? 0), 0) }]
+    }),
+  )
+
+  const responses = leads
+    .map((l) => l.responseMinutes)
+    .filter((v) => typeof v === 'number' && Number.isFinite(v))
+  const avgResponseMinutes = responses.length
+    ? Math.round((responses.reduce((a, b) => a + b, 0) / responses.length) * 10) / 10
+    : null
+
+  const qualifiedOrBeyond = ['qualified', 'proposal', 'won']
+    .map((s) => counts[s])
+    .reduce((a, b) => a + b, 0)
+  const conversionRate = leads.length
+    ? Math.round((qualifiedOrBeyond / leads.length) * 1000) / 10
+    : 0
+
+  const bySourceMap = new Map()
+  for (const lead of leads) {
+    const key = lead.source || 'Lainnya'
+    bySourceMap.set(key, (bySourceMap.get(key) ?? 0) + 1)
+  }
+  const leadsBySource = [...bySourceMap.entries()]
+    .map(([source, count]) => ({ source, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5)
+
+  const campaignLeads = new Map()
+  for (const lead of leads) {
+    if (lead.campaignId) {
+      campaignLeads.set(lead.campaignId, (campaignLeads.get(lead.campaignId) ?? 0) + 1)
+    }
+  }
+  const topCampaigns = [...campaignLeads.entries()]
+    .map(([id, count]) => ({
+      name: campaigns.find((c) => c.id === id)?.name ?? 'Kampanye',
+      leads: count,
+    }))
+    .sort((a, b) => b.leads - a.leads)
+    .slice(0, 4)
+
+  const pipelineValue = dealValueByStage.qualified.value + dealValueByStage.proposal.value
+
+  // --- Widget live untuk landing page -------------------------------------
+  const dayKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+  const today = new Date()
+  const last7 = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(today)
+    d.setDate(today.getDate() - (6 - i))
+    return dayKey(d)
+  })
+  const prev7 = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(today)
+    d.setDate(today.getDate() - (13 - i))
+    return dayKey(d)
+  })
+
+  const perDay = new Map()
+  const respPerDay = new Map()
+  for (const lead of leads) {
+    const k = (lead.createdAt ?? '').slice(0, 10)
+    perDay.set(k, (perDay.get(k) ?? 0) + 1)
+    if (typeof lead.responseMinutes === 'number') {
+      const arr = respPerDay.get(k) ?? []
+      arr.push(lead.responseMinutes)
+      respPerDay.set(k, arr)
+    }
+  }
+
+  const leadsTrend = last7.map((date) => ({ date, count: perDay.get(date) ?? 0 }))
+  const trendTotal = leadsTrend.reduce((sum, d) => sum + d.count, 0)
+  const prevTotal = prev7.reduce((sum, k) => sum + (perDay.get(k) ?? 0), 0)
+  const trendDeltaPct = prevTotal
+    ? Math.round(((trendTotal - prevTotal) / prevTotal) * 100)
+    : null
+
+  const responseTrend = last7.map((date) => {
+    const arr = respPerDay.get(date) ?? []
+    return {
+      date,
+      avg: arr.length ? Math.round((arr.reduce((a, b) => a + b, 0) / arr.length) * 10) / 10 : null,
+    }
+  })
+
+  const targetMinutes = data.settings?.leadResponseTargetMinutes ?? 60
+  const responded = leads.filter((l) => typeof l.responseMinutes === 'number')
+  const withinTarget = responded.filter((l) => l.responseMinutes <= targetMinutes).length
+  const sla = {
+    targetMinutes,
+    respondedCount: responded.length,
+    withinTargetPct: responded.length
+      ? Math.round((withinTarget / responded.length) * 100)
+      : null,
+  }
+
+  const activeCampaigns = campaigns.filter((c) => c.status === 'active').length
+
+  return {
+    totalLeads: leads.length,
+    conversionRate,
+    avgResponseMinutes,
+    pipelineValue,
+    leadsByStatus: statusOrder.map((stage) => ({ stage, count: counts[stage] })),
+    dealValueByStage,
+    leadsBySource,
+    topCampaigns,
+    leadsTrend,
+    trendTotal,
+    trendDeltaPct,
+    responseTrend,
+    sla,
+    activeCampaigns,
+    updatedAt: new Date().toISOString(),
+  }
+}

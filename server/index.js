@@ -26,6 +26,7 @@ import {
   markAllNotificationsRead,
   markNotificationRead,
   publicSnapshot,
+  publicStats,
   resetToSeed,
   saveCampaign,
   saveLandingPage,
@@ -98,6 +99,9 @@ app.get('/api/health', asyncRoute(async (_req, res) => {
 app.get('/api/public/bootstrap', asyncRoute(async (_req, res) => {
   const data = await readAll()
   res.json({ snapshot: publicSnapshot(data) })
+}))
+app.get('/api/public/stats', asyncRoute(async (_req, res) => {
+  res.json({ stats: publicStats(await readAll()) })
 }))
 
 app.get('/api/bootstrap', requireAuth, asyncRoute(async (req, res) => {

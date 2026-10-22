@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import Logo from '../brand/Logo.jsx'
 import { COMPANY, NAV_LINKS } from '../../lib/content.js'
@@ -9,6 +9,30 @@ const CURRENT_YEAR = new Date().getFullYear()
 function Header() {
   const [open, setOpen] = useState(false)
   const location = useLocation()
+
+  // Reveal fade+geser sekali jalan untuk blok publik; dilewati bila pengguna
+  // meminta reduced motion (aman: tanpa kelas = konten tampil normal).
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return undefined
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const targets = Array.from(document.querySelectorAll('main .section')).filter(
+      (el) => !el.classList.contains('reveal-item'),
+    )
+    if (!targets.length) return undefined
+    targets.forEach((el) => el.classList.add('reveal-item'))
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          entry.target.classList.add('is-in')
+          io.unobserve(entry.target)
+        })
+      },
+      { rootMargin: '0px 0px -40px 0px', threshold: 0.05 },
+    )
+    targets.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [location.pathname])
 
   const linkClass = ({ isActive }) =>
     `rounded-md px-3 py-2 text-sm font-medium transition-colors ${

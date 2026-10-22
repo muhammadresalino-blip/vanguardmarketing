@@ -115,6 +115,26 @@ export function Contact() {
           </div>
         </div>
       </section>
+
+      <section className="section">
+        <div className="container-page rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 px-6 py-14 text-center sm:px-10 lg:py-16">
+          <h2 className="text-3xl text-white sm:text-4xl">Siap menata lead Anda minggu ini?</h2>
+          <p className="mx-auto mt-4 max-w-xl text-blue-100">
+            Mulai dari satu langkah kecil — kirim pesan singkat, kami balas kurang dari satu jam kerja.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a
+              href={`https://wa.me/${COMPANY.whatsapp}?text=Halo%20Vanguard%20Marketing%2C%20saya%20ingin%20konsultasi`}
+              className="btn-dark"
+            >
+              Chat WhatsApp
+            </a>
+            <a href={`mailto:${COMPANY.email}`} className="btn bg-white text-slate-900 shadow-md hover:bg-blue-50">
+              Kirim email
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   )
 }

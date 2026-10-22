@@ -288,24 +288,24 @@ export default function Home() {
 
       {/* ===== CTA + form ======================================= */}
       <section className="section">
-        <div className="container-page grid items-start gap-10 lg:grid-cols-2">
+        <div className="container-page rounded-3xl bg-gradient-to-br from-blue-500 to-indigo-600 py-12 sm:px-10 lg:grid lg:grid-cols-2 lg:items-start lg:gap-12 lg:px-14 lg:py-16">
           <div className="pt-4">
-            <h2 className="text-3xl sm:text-4xl">Siap menata lead Anda minggu ini?</h2>
-            <p className="mt-4 max-w-lg text-neutral-500">
+            <h2 className="text-3xl text-white sm:text-4xl">Siap menata lead Anda minggu ini?</h2>
+            <p className="mt-4 max-w-lg text-blue-100">
               Kirim pesan singkat tentang bisnis Anda. Kami balas kurang dari satu jam kerja
               dengan langkah konkret — bukan proposal tebal.
             </p>
-            <ul className="mt-8 space-y-3 text-sm text-neutral-600">
+            <ul className="mt-8 space-y-3 text-sm text-blue-50">
               <li className="flex items-center gap-3">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-100 text-xs text-accent-600">✓</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs text-white">✓</span>
                 Respons pertama rata-rata 43 menit
               </li>
               <li className="flex items-center gap-3">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-100 text-xs text-accent-600">✓</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs text-white">✓</span>
                 Audit funnel singkat, tanpa biaya
               </li>
               <li className="flex items-center gap-3">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-accent-100 text-xs text-accent-600">✓</span>
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs text-white">✓</span>
                 Rencana 30 hari yang bisa langsung dijalankan
               </li>
             </ul>

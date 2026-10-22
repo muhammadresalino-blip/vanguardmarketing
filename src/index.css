@@ -15,7 +15,7 @@
   --color-primary-200: #bcd4ff;
   --color-primary-300: #8ebbff;
   --color-primary-400: #5b96fc;
-  --color-primary-500: #3882f6;
+  --color-primary-500: #3b82f6;
   --color-primary-600: #1f63e9;
   --color-primary-700: #1a4ed6;
   --color-primary-800: #1c40ac;
@@ -73,7 +73,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-neutral-900;
+    @apply font-extrabold tracking-tight text-neutral-900;
     font-family: var(--font-display);
     line-height: 1.2;
   }
@@ -111,32 +111,39 @@
   .btn-accent,
   .btn-teal,
   .btn-outline,
-  .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold
+  .btn-ghost,
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold
       transition-all duration-200 disabled:pointer-events-none disabled:opacity-50;
   }
 
   .btn-primary {
-    @apply bg-primary-500 text-white shadow-[0_4px_16px_rgba(56,130,246,0.28)]
-      hover:bg-primary-600 hover:shadow-[0_6px_24px_rgba(56,130,246,0.36)]
-      active:scale-[0.98];
+    @apply bg-primary-500 text-white shadow-[0_4px_16px_rgba(59,130,246,0.30)]
+      hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-[0_8px_24px_rgba(59,130,246,0.38)]
+      active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-accent {
-    @apply bg-accent-500 text-white shadow-[0_4px_16px_rgba(16,185,129,0.28)]
-      hover:bg-accent-600 hover:shadow-[0_6px_24px_rgba(16,185,129,0.36)]
-      active:scale-[0.98];
+    @apply bg-accent-500 text-white shadow-[0_4px_16px_rgba(16,185,129,0.30)]
+      hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-[0_8px_24px_rgba(16,185,129,0.38)]
+      active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-teal {
-    @apply bg-secondary-500 text-white shadow-[0_4px_16px_rgba(99,102,241,0.28)]
-      hover:bg-secondary-600 hover:shadow-[0_6px_24px_rgba(99,102,241,0.36)]
-      active:scale-[0.98];
+    @apply bg-secondary-500 text-white shadow-[0_4px_16px_rgba(99,102,241,0.30)]
+      hover:-translate-y-0.5 hover:bg-secondary-600 hover:shadow-[0_8px_24px_rgba(99,102,241,0.38)]
+      active:translate-y-0 active:scale-[0.98];
+  }
+
+  .btn-dark {
+    @apply bg-slate-900 text-white shadow-md hover:-translate-y-0.5 hover:bg-slate-800
+      hover:shadow-lg active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-outline {
     @apply border-2 border-neutral-200 bg-white text-neutral-700
-      hover:border-primary-300 hover:bg-primary-50 hover:text-primary-600 active:scale-[0.98];
+      hover:-translate-y-0.5 hover:border-primary-300 hover:bg-primary-50 hover:text-primary-600
+      active:translate-y-0 active:scale-[0.98];
   }
 
   .btn-ghost {
@@ -144,16 +151,16 @@
   }
 
   .btn-sm {
-    @apply rounded-lg px-3 py-2 text-xs;
+    @apply rounded-full px-3.5 py-2 text-xs;
   }
 
   .btn-lg {
-    @apply rounded-xl px-7 py-3.5 text-base;
+    @apply rounded-full px-7 py-3.5 text-base;
   }
 
   /* --- Cards ----------------------------------------------------------- */
   .card {
-    @apply rounded-2xl border border-neutral-100 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.04)]
+    @apply rounded-3xl border border-neutral-100 bg-white shadow-[0_2px_12px_rgba(0,0,0,0.04)]
       transition-all duration-200;
   }
 
@@ -163,7 +170,7 @@
   }
 
   .card-pad {
-    @apply rounded-2xl border border-neutral-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)];
+    @apply rounded-3xl border border-neutral-100 bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.04)];
   }
 
   .card-hover:hover {
@@ -179,9 +186,13 @@
   .input,
   .textarea,
   .select {
-    @apply w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900
+    @apply w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900
       placeholder:text-neutral-400 transition-all duration-200
       hover:border-neutral-300 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20;
+  }
+
+  .input {
+    @apply rounded-full;
   }
 
   .textarea {
@@ -261,5 +272,27 @@
 
   .divider {
     @apply h-px w-full bg-neutral-100;
+  }
+}
+
+/* --- Reveal: elemen masuk fade+geser vertikal, sekali jalan -------------
+   Kelas .reveal-item/.is-in ditambahkan JS (IntersectionObserver) hanya
+   saat pengguna tidak meminta reduced motion. */
+.reveal-item {
+  opacity: 0;
+  translate: 0 18px;
+  transition: opacity 0.5s ease-out, translate 0.5s ease-out;
+}
+
+.reveal-item.is-in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    opacity: 1;
+    translate: none;
+    transition: none;
   }
 }

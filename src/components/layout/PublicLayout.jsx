@@ -34,10 +34,9 @@ function Header() {
     return () => io.disconnect()
   }, [location.pathname])
 
-  const linkClass = ({ isActive }) =>
-    `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-      isActive ? 'text-neutral-800' : 'text-slate-600 hover:text-neutral-800'
-    }`
+  // Penanda halaman aktif ditangani CSS .nav-link (garis pill melar masuk
+  // via selector [aria-current='page'] yang dipasang NavLink otomatis).
+  const linkClass = () => 'nav-link'
 
   return (
     <header className="sticky top-0 z-30 border-b border-neutral-100 bg-white/90 backdrop-blur">

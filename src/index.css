@@ -273,6 +273,47 @@
   .divider {
     @apply h-px w-full bg-neutral-100;
   }
+
+  /* --- Nav publik: penanda halaman aktif --------------------------------
+     Garis pill di bawah item melar masuk (scaleX) saat halaman aktif,
+     pratinjau samar saat hover. NavLink memasang aria-current="page". */
+  .nav-link {
+    @apply relative px-3 py-2 text-sm font-medium text-slate-600 transition-colors duration-200 hover:text-neutral-800;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    width: 55%;
+    height: 4px;
+    border-radius: 9999px;
+    background: var(--color-primary-500);
+    opacity: 0;
+    transform: translateX(-50%) scaleX(0.2);
+    transition: opacity 0.25s ease, transform 0.3s ease-out;
+  }
+
+  .nav-link:hover::after {
+    opacity: 0.35;
+    transform: translateX(-50%) scaleX(0.6);
+  }
+
+  .nav-link[aria-current='page'] {
+    @apply font-semibold text-primary-600;
+  }
+
+  .nav-link[aria-current='page']::after {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link::after {
+      transition: none;
+    }
+  }
 }
 
 /* --- Reveal: elemen masuk fade+geser vertikal, sekali jalan -------------

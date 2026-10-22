@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import Logo from '../brand/Logo.jsx'
 import { COMPANY, NAV_LINKS } from '../../lib/content.js'
@@ -57,6 +58,7 @@ function Header() {
           </Link>
           <Link to="/contact" className="btn-primary btn-sm">
           Konsultasi Gratis
+          <ArrowRight className="h-4 w-4" />
         </Link>
         </div>
 
@@ -92,6 +94,7 @@ function Header() {
             <div className="mt-2 flex flex-col gap-2">
               <Link to="/contact" className="btn-primary" onClick={() => setOpen(false)}>
                 Konsultasi gratis
+                <ArrowRight className="h-4 w-4" />
               </Link>
               <Link to="/admin/login" className="btn-outline" onClick={() => setOpen(false)}>
                 Login tim
@@ -170,6 +173,7 @@ function Footer() {
 
           <Link to="/contact" className="btn-teal btn-sm mt-5">
             Minta audit funnel
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>

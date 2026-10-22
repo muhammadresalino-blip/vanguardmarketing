@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import LeadForm from '../../components/leads/LeadForm.jsx'
 import { PROCESS_STEPS, SERVICES, WHY_US } from '../../lib/content.js'
@@ -24,6 +25,7 @@ export function Services() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/contact" className="btn-accent">
               Konsultasi kebutuhan
+              <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/case-studies" className="btn-outline">
               Lihat hasilnya

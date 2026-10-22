@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { CircleDollarSign, Users } from 'lucide-react'
+import ChannelIcon from '../../components/brand/ChannelIcons.jsx'
 import { Link } from 'react-router-dom'
 import { useData, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -180,7 +181,12 @@ export function Dashboard() {
               <tbody>
                 {bySource.map((source) => (
                   <tr key={source.source}>
-                    <td className="font-medium text-neutral-900">{source.source}</td>
+                    <td className="font-medium text-neutral-900">
+                      <span className="flex items-center gap-2">
+                        <ChannelIcon source={source.source} className="h-5 w-5" />
+                        {source.source}
+                      </span>
+                    </td>
                     <td>{formatNumber(source.total)}</td>
                     <td>{formatPercent(source.qualityRate)}</td>
                     <td>{formatNumber(source.won)}</td>
@@ -304,7 +310,12 @@ export function Dashboard() {
                       </Link>
                       <p className="text-xs text-slate-500">{lead.company}</p>
                     </td>
-                    <td className="text-sm">{lead.source}</td>
+                    <td className="text-sm">
+                    <span className="flex items-center gap-2">
+                      <ChannelIcon source={lead.source} className="h-4 w-4" />
+                      {lead.source}
+                    </span>
+                  </td>
                     <td>
                       <LeadStatusBadge status={lead.status} />
                     </td>

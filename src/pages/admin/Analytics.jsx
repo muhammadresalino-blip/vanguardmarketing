@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { CircleDollarSign, LayoutDashboard, Users } from 'lucide-react'
+import ChannelIcon from '../../components/brand/ChannelIcons.jsx'
 import { useData } from '../../context/DataContext.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import { useNow } from '../../hooks/useNow.js'
@@ -260,7 +261,12 @@ export function Analytics() {
               <tbody>
                 {sourceStats.map((source) => (
                   <tr key={source.source}>
-                    <td className="font-medium text-neutral-900">{source.source}</td>
+                    <td className="font-medium text-neutral-900">
+                      <span className="flex items-center gap-2">
+                        <ChannelIcon source={source.source} className="h-5 w-5" />
+                        {source.source}
+                      </span>
+                    </td>
                     <td>{formatNumber(source.total)}</td>
                     <td>{formatNumber(source.qualified)}</td>
                     <td>

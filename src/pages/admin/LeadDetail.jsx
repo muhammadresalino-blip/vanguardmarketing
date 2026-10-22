@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { UserRoundSearch } from 'lucide-react'
+import ChannelIcon from '../../components/brand/ChannelIcons.jsx'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useData, useCampaignMap, useLead, useLeadActivities, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -158,7 +159,10 @@ export function LeadDetail() {
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Sumber lead</dt>
-                <dd className="text-sm font-medium text-neutral-900">{lead.source}</dd>
+                <dd className="flex items-center gap-2 text-sm font-medium text-neutral-900">
+                  <ChannelIcon source={lead.source} className="h-4 w-4" />
+                  {lead.source}
+                </dd>
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-wide text-slate-400">Kampanye</dt>

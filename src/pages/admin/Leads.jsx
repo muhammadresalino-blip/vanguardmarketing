@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Search } from 'lucide-react'
+import ChannelIcon from '../../components/brand/ChannelIcons.jsx'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useData, useCampaignMap, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -386,7 +387,10 @@ export function Leads() {
                           <p className="text-xs text-slate-400">{lead.email}</p>
                         </td>
                         <td>
-                          <p className="text-sm">{lead.source}</p>
+                          <p className="flex items-center gap-2 text-sm">
+                            <ChannelIcon source={lead.source} className="h-4 w-4" />
+                            {lead.source}
+                          </p>
                           <p className="text-xs text-slate-500">{campaign?.name ?? 'Organik / langsung'}</p>
                           {lead.utmMedium && (
                             <p className="font-mono text-[11px] text-slate-400">medium: {lead.utmMedium}</p>

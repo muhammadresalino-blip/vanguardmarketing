@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import { useData } from '../../context/DataContext.jsx'
 import LeadForm from '../../components/leads/LeadForm.jsx'
@@ -59,9 +60,11 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/contact" className="btn-primary btn-lg">
                 Mulai gratis
+                <ArrowRight className="h-4 w-4" />
               </Link>
               <Link to="/services" className="btn-outline btn-lg">
                 Lihat cara kerja
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
@@ -207,6 +210,7 @@ export default function Home() {
 
             <Link to="/case-studies" className="btn-primary mt-8">
               Lihat semua studi kasus
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 

@@ -31,10 +31,10 @@ export function LogoMark({ className = '', size = 36 }) {
       </defs>
 
       {/* Lengan kanan (cyan -> teal), di bawah */}
-      <path d="M46 13 L31 46" stroke={`url(#${idR})`} strokeWidth="10" strokeLinecap="round" />
+      <path d="M46 13 L31 46" stroke={`url(#${idR})`} strokeWidth="10" strokeLinecap="round" opacity="0.85" />
 
-      {/* Lengan kiri (indigo -> biru), di atas — menutup verteks jadi satu titik rapi */}
-      <path d="M18 13 L33 51" stroke={`url(#${idL})`} strokeWidth="10" strokeLinecap="round" />
+      {/* Lengan kiri (indigo -> biru), di atas — irisan kedua lengan menyatu (opacity 0.85) */}
+      <path d="M18 13 L33 51" stroke={`url(#${idL})`} strokeWidth="10" strokeLinecap="round" opacity="0.85" />
     </svg>
   )
 }

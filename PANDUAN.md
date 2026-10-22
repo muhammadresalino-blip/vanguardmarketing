@@ -309,15 +309,17 @@ git config user.email "email-github-kamu"
 **Cara tercepat mengirim perubahan:**
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\push-github.ps1
+git add -A
+git commit -m "pesan perubahan"
+git push
 ```
 
-Skrip akan commit perubahan, menyinkronkan dengan GitHub, lalu push.
+Perintah di atas menjalankan commit lalu push langsung ke GitHub.
 Bila belum pernah login, pilih salah satu:
 
 ```powershell
 gh auth login                                   # GitHub CLI (sudah terpasang)
-.\push-github.ps1 -Token "ghp_xxxxxxxx"         # Personal Access Token, scope: repo
+
 git push -u origin main                         # lewat Git Credential Manager
 ```
 

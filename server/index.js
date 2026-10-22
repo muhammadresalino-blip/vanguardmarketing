@@ -452,7 +452,11 @@ async function start() {
   await initStore()
   const seeded = await ensureSeed()
   if (!process.env.JWT_SECRET) {
-    console.warn('[api] JWT_SECRET belum diatur — memakai nilai pengembangan. Wajib diisi saat produksi.')
+    if (process.env.NODE_ENV === 'production') {
+      console.error('[api] JWT_SECRET wajib diisi di produksi. Menghentikan server.')
+      process.exit(1)
+    }
+    console.warn('[api] JWT_SECRET belum diatur - memakai nilai pengembangan. Wajib diisi saat produksi.')
   }
   app.listen(PORT, () => {
     console.log(`[api] siap di http://localhost:${PORT} (driver: ${driverKind()})${seeded ? ' — data contoh dibuat' : ''}`)

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { ListChecks } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useData, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -133,7 +134,7 @@ export function Tasks() {
         <EmptyState
           title="Tidak ada tugas di kategori ini"
           description="Tugas dibuat otomatis saat lead masuk (follow-up awal) atau manual dari halaman lead."
-          icon="✅"
+          icon={<ListChecks className="h-7 w-7 text-slate-500" />}
         />
       ) : (
         <section className="card">

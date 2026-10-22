@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { CircleDollarSign, LayoutDashboard, Users } from 'lucide-react'
 import { useData } from '../../context/DataContext.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import { useNow } from '../../hooks/useNow.js'
@@ -144,7 +145,7 @@ export function Analytics() {
           value={formatNumber(rangedLeads.length)}
           trend={range ? leadDelta : undefined}
           trendLabel={range ? 'dibanding periode sebelumnya' : 'sejak data pertama'}
-          icon="👥"
+          icon={<Users className="h-7 w-7 text-slate-500" />}
         />
         <StatCard
           label="Konversi ke lead berkualitas"
@@ -162,7 +163,7 @@ export function Analytics() {
           )}
           hint="Realisasi belanja dibagi jumlah lead periode ini"
           tone="accent"
-          icon="💸"
+          icon={<CircleDollarSign className="h-7 w-7 text-slate-500" />}
         />
         <StatCard
           label="Waktu respons rata-rata"
@@ -316,7 +317,7 @@ export function Analytics() {
         </p>
         {roas.length === 0 ? (
           <div className="mt-4">
-            <EmptyState title="Belum ada data kampanye pada periode ini" icon="📊" />
+            <EmptyState title="Belum ada data kampanye pada periode ini" icon={<LayoutDashboard className="h-7 w-7 text-slate-500" />} />
           </div>
         ) : (
           <div className="mt-4 table-wrap">

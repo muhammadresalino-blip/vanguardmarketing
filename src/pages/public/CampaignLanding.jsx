@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link2 } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useData } from '../../context/DataContext.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
@@ -42,7 +43,7 @@ export function CampaignLanding() {
         <EmptyState
           title="Landing page tidak ditemukan"
           description="Halaman kampanye ini sudah tidak aktif atau tautannya salah."
-          icon="🔗"
+          icon={<Link2 className="h-7 w-7 text-slate-500" />}
           action={
             <Link to="/" className="btn-primary btn-sm">
               Kembali ke halaman utama

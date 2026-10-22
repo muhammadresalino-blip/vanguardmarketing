@@ -1,4 +1,17 @@
 import { useMemo, useState } from 'react'
+import {
+  Bell,
+  Filter,
+  FileText,
+  LayoutDashboard,
+  ListChecks,
+  Megaphone,
+  Menu,
+  Settings,
+  ShieldCheck,
+  TrendingUp,
+  UsersRound,
+} from 'lucide-react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Logo from '../brand/Logo.jsx'
 import Avatar from '../ui/Avatar.jsx'
@@ -9,15 +22,15 @@ import { ROLE_LABEL } from '../../lib/constants.js'
 import { formatRelativeTime } from '../../lib/format.js'
 
 const MENU = [
-  { to: '/admin', label: 'Dashboard', icon: '📊', module: 'dashboard', end: true },
-  { to: '/admin/leads', label: 'CRM Lead', icon: '👥', module: 'leads' },
-  { to: '/admin/pipeline', label: 'Pipeline & Deal', icon: '🔀', module: 'pipeline' },
-  { to: '/admin/tasks', label: 'Tugas Follow-up', icon: '✅', module: 'tasks' },
-  { to: '/admin/campaigns', label: 'Kampanye', icon: '📣', module: 'campaigns' },
-  { to: '/admin/analytics', label: 'Analytics', icon: '📈', module: 'analytics' },
-  { to: '/admin/content', label: 'Konten', icon: '📝', module: 'content' },
-  { to: '/admin/users', label: 'User & Role', icon: '🔐', module: 'users' },
-  { to: '/admin/settings', label: 'Pengaturan', icon: '⚙️', module: 'settings' },
+  { to: '/admin', label: 'Dashboard', icon: LayoutDashboard, module: 'dashboard', end: true },
+  { to: '/admin/leads', label: 'CRM Lead', icon: UsersRound, module: 'leads' },
+  { to: '/admin/pipeline', label: 'Pipeline & Deal', icon: Filter, module: 'pipeline' },
+  { to: '/admin/tasks', label: 'Tugas Follow-up', icon: ListChecks, module: 'tasks' },
+  { to: '/admin/campaigns', label: 'Kampanye', icon: Megaphone, module: 'campaigns' },
+  { to: '/admin/analytics', label: 'Analytics', icon: TrendingUp, module: 'analytics' },
+  { to: '/admin/content', label: 'Konten', icon: FileText, module: 'content' },
+  { to: '/admin/users', label: 'User & Role', icon: ShieldCheck, module: 'users' },
+  { to: '/admin/settings', label: 'Pengaturan', icon: Settings, module: 'settings' },
 ]
 
 function NotificationBell() {
@@ -45,7 +58,7 @@ function NotificationBell() {
         aria-expanded={open}
         aria-label="Notifikasi"
       >
-        🔔
+        <Bell className="h-4 w-4" />
         {unread > 0 && (
           <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent-500 px-1 text-[10px] font-bold text-white">
             {unread}
@@ -131,19 +144,29 @@ export function AdminLayout() {
             }`
           }
         >
-          <span className="flex items-center gap-2.5">
-            <span aria-hidden="true">{item.icon}</span>
-            {item.label}
-          </span>
-          {item.module === 'leads' && myLeads.length > 0 && (
-            <span className="rounded-full bg-slate-200 px-2 text-xs font-semibold text-slate-600">
-              {myLeads.length}
-            </span>
-          )}
-          {item.module === 'tasks' && myOpenTasks.length > 0 && (
-            <span className="rounded-full bg-accent-100 px-2 text-xs font-semibold text-accent-700">
-              {myOpenTasks.length}
-            </span>
+          {({ isActive }) => (
+            <>
+              <span className="flex items-center gap-2.5">
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
+                    isActive ? 'bg-white/20' : 'bg-slate-100 text-slate-500'
+                  }`}
+                >
+                  <item.icon className="h-[18px] w-[18px]" />
+                </span>
+                {item.label}
+              </span>
+              {item.module === 'leads' && myLeads.length > 0 && (
+                <span className="rounded-full bg-slate-200 px-2 text-xs font-semibold text-slate-600">
+                  {myLeads.length}
+                </span>
+              )}
+              {item.module === 'tasks' && myOpenTasks.length > 0 && (
+                <span className="rounded-full bg-accent-100 px-2 text-xs font-semibold text-accent-700">
+                  {myOpenTasks.length}
+                </span>
+              )}
+            </>
           )}
         </NavLink>
       ))}
@@ -189,7 +212,7 @@ export function AdminLayout() {
                   onClick={() => setMobileOpen(true)}
                   aria-label="Buka menu"
                 >
-                  ☰
+                  <Menu className="h-4 w-4" />
                 </button>
                 <div className="hidden sm:block">
                   <p className="text-sm font-semibold text-neutral-900">

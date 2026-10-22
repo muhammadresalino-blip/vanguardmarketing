@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Megaphone } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useData, useCampaignMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -202,7 +203,7 @@ export function Campaigns() {
         <EmptyState
           title="Belum ada kampanye"
           description="Tambahkan kampanye pertama untuk mulai melacak sumber lead per kanal."
-          icon="📣"
+          icon={<Megaphone className="h-7 w-7 text-slate-500" />}
           action={
             <button type="button" className="btn-primary btn-sm" onClick={openCreate}>
               Buat kampanye

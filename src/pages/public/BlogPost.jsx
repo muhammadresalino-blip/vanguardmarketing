@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom'
+import { FileText } from 'lucide-react'
 import { useData } from '../../context/DataContext.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import Badge from '../../components/ui/Badge.jsx'
@@ -56,7 +57,7 @@ export function BlogPost() {
               Kembali ke blog
             </Link>
           }
-          icon="📄"
+          icon={<FileText className="h-7 w-7 text-slate-500" />}
         />
       </div>
     )

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Search } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useData, useCampaignMap, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -342,7 +343,7 @@ export function Leads() {
             <EmptyState
               title="Tidak ada lead yang cocok"
               description="Coba longgarkan filter, atau kirim lead uji coba dari form di portal publik."
-              icon="🔎"
+              icon={<Search className="h-7 w-7 text-slate-500" />}
               action={
                 <Link to="/contact" className="btn-primary btn-sm">
                   Buka form inquiry

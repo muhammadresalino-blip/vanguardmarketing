@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FileText, Target } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useData, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -147,7 +148,7 @@ export function Content() {
         <section className="card">
           {posts.length === 0 ? (
             <div className="p-6">
-              <EmptyState title="Belum ada artikel" icon="📝" />
+              <EmptyState title="Belum ada artikel" icon={<FileText className="h-7 w-7 text-slate-500" />} />
             </div>
           ) : (
             <div className="table-wrap">
@@ -262,7 +263,7 @@ export function Content() {
             <EmptyState
               title="Belum ada landing page"
               description="Buat kampanye terlebih dahulu; landing page akan dibuat otomatis."
-              icon="🎯"
+              icon={<Target className="h-7 w-7 text-slate-500" />}
             />
           ) : (
             landingPages.map((page) => {

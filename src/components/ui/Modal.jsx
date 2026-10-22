@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { X } from 'lucide-react'
 
 export function Modal({ open, onClose, title, description, children, footer, size = 'md' }) {
   useEffect(() => {
@@ -38,7 +39,7 @@ export function Modal({ open, onClose, title, description, children, footer, siz
             {description && <p className="mt-0.5 text-sm text-slate-500">{description}</p>}
           </div>
           <button type="button" onClick={onClose} className="btn-ghost btn-sm" aria-label="Tutup dialog">
-            ✕
+            <X className="h-4 w-4" />
           </button>
         </div>
         <div className="px-5 py-5">{children}</div>

@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Search } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import { useData } from '../../context/DataContext.jsx'
@@ -102,7 +103,7 @@ export function Blog() {
               <EmptyState
                 title="Artikel tidak ditemukan"
                 description="Coba kata kunci lain atau pilih kategori berbeda."
-                icon="🔍"
+                icon={<Search className="h-7 w-7 text-slate-500" />}
                 action={
                   <button
                     type="button"

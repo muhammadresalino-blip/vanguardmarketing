@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Filter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useData, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -103,7 +104,7 @@ export function Pipeline() {
         <EmptyState
           title="Belum ada deal di pipeline"
           description="Ubah status lead menjadi Qualified pada halaman CRM untuk membuat deal otomatis."
-          icon="🔀"
+          icon={<Filter className="h-7 w-7 text-slate-500" />}
           action={
             <Link to="/admin/leads" className="btn-primary btn-sm">
               Buka CRM lead

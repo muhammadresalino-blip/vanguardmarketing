@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { UserRoundSearch } from 'lucide-react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useData, useCampaignMap, useLead, useLeadActivities, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -50,7 +51,7 @@ export function LeadDetail() {
             Kembali ke daftar lead
           </Link>
         }
-        icon="🕵️"
+        icon={<UserRoundSearch className="h-7 w-7 text-slate-500" />}
       />
     )
   }

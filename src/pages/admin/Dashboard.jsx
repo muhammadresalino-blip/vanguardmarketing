@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { CircleDollarSign, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useData, useUserMap } from '../../context/DataContext.jsx'
 import { useAuth } from '../../context/AuthContext.jsx'
@@ -98,7 +99,7 @@ export function Dashboard() {
           value={formatNumber(summary.total)}
           trend={trendDelta}
           trendLabel={`${summary.newLast7Days} lead 7 hari terakhir`}
-          icon="👥"
+          icon={<Users className="h-7 w-7 text-slate-500" />}
         />
         <StatCard
           label="Lead berkualifikasi"
@@ -119,7 +120,7 @@ export function Dashboard() {
           value={formatCompactCurrency(summary.pipelineValue)}
           hint={`Proyeksi berbobot ${formatCompactCurrency(summary.weightedForecast)}`}
           tone="accent"
-          icon="💰"
+          icon={<CircleDollarSign className="h-7 w-7 text-slate-500" />}
         />
       </div>
 

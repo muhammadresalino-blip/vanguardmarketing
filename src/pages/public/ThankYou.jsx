@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from 'react-router-dom'
+import { Check } from 'lucide-react'
 import { useData } from '../../context/DataContext.jsx'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle.js'
 import Badge from '../../components/ui/Badge.jsx'
@@ -16,8 +17,8 @@ export function ThankYou() {
   return (
     <section className="container-page py-16 sm:py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-accent-100 text-2xl">
-          ✓
+        <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-accent-500">
+          <Check className="h-8 w-8 text-white" strokeWidth={3} />
         </span>
         <h1 className="mt-5 text-3xl sm:text-4xl">Terima kasih, permintaan Anda sudah masuk</h1>
         <p className="mt-4 text-slate-600">

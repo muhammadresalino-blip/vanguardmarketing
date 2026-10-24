@@ -18,10 +18,10 @@ export function Login() {
     if (isAuthenticated) navigate('/admin', { replace: true })
   }, [isAuthenticated, navigate])
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     setLoading(true)
-    const result = login(email, password)
+    const result = await login(email, password)
     setLoading(false)
     if (!result.ok) {
       setError(result.error)

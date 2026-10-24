@@ -4,6 +4,7 @@ import { DataProvider, useData } from './context/DataContext.jsx'
 import { AuthProvider, useAuth } from './context/AuthContext.jsx'
 import PublicLayout from './components/layout/PublicLayout.jsx'
 import AdminLayout from './components/layout/AdminLayout.jsx'
+import { ErrorBoundary } from './components/ui/ErrorBoundary.jsx'
 import { captureUtmContext, getUtmContext } from './lib/utm.js'
 import { CHANNEL_LABEL } from './lib/constants.js'
 
@@ -149,11 +150,12 @@ export function App() {
   return (
     <DataProvider>
       <AuthProvider>
-        <DataGate>
-          <UtmCapture />
-          <ScrollToTop />
-          <PortalViewTracker />
-          <Routes>
+        <ErrorBoundary>
+          <DataGate>
+            <UtmCapture />
+            <ScrollToTop />
+            <PortalViewTracker />
+            <Routes>
             {/* Portal publik */}
             <Route element={<PublicLayout />}>
               <Route index element={<Home />} />
@@ -262,7 +264,8 @@ export function App() {
               />
             </Route>
           </Routes>
-        </DataGate>
+          </DataGate>
+        </ErrorBoundary>
       </AuthProvider>
     </DataProvider>
   )

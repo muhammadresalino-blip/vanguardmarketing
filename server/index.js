@@ -6,6 +6,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import cors from 'cors'
 import express from 'express'
+import { helmetConfig, rateLimiters, sanitizeBody, additionalSecurityHeaders } from './security.js'
 import {
   isManager,
   requireAuth,
@@ -57,33 +58,34 @@ const app = express()
 const PORT = Number(process.env.PORT || 4000)
 
 app.disable('x-powered-by')
+
+// Security middleware (urutan penting!)
+app.use((req, res, next) => { console.log('[mw] start', req.path); next() })
+app.use(helmetConfig)           // Helmet CSP + security headers
+app.use((req, res, next) => { console.log('[mw] helmetConfig done', req.path); next() })
+app.use(rateLimiters.api)       // General API rate limit
+app.use((req, res, next) => { console.log('[mw] rateLimiters.api done', req.path); next() })
+app.use(sanitizeBody)           // Sanitize all input
+app.use((req, res, next) => { console.log('[mw] sanitizeBody done', req.path); next() })
+app.use(additionalSecurityHeaders) // Additional security headers
+app.use((req, res, next) => { console.log('[mw] additionalSecurityHeaders done', req.path); next() })
 app.use(express.json({ limit: '1mb' }))
+app.use((req, res, next) => { console.log('[mw] express.json done', req.path); next() })
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',').map((item) => item.trim()) : true,
-  }),
+  })
 )
-
-// Pembatas percobaan login sederhana (per proses) untuk mencegah brute force.
-const loginAttempts = new Map()
-function loginLimiter(req, res, next) {
-  const key = req.ip ?? 'unknown'
-  const now = Date.now()
-  const entry = loginAttempts.get(key) ?? { count: 0, resetAt: now + 60_000 }
-  if (now > entry.resetAt) {
-    entry.count = 0
-    entry.resetAt = now + 60_000
-  }
-  entry.count += 1
-  loginAttempts.set(key, entry)
-  if (entry.count > 10) {
-    return res.status(429).json({ error: 'Terlalu banyak percobaan masuk. Coba lagi dalam satu menit.' })
-  }
-  return next()
-}
+app.use((req, res, next) => { console.log('[mw] cors done', req.path); next() })
 
 function asyncRoute(handler) {
-  return (req, res, next) => Promise.resolve(handler(req, res, next)).catch(next)
+  return (req, res, next) => {
+    console.log('[asyncRoute] calling handler for', req.path)
+    Promise.resolve(handler(req, res, next)).catch(err => {
+      console.error('[asyncRoute] error caught:', err)
+      next(err)
+    })
+  }
 }
 
 async function snapshotResponse(res, user, extra = {}) {
@@ -92,9 +94,11 @@ async function snapshotResponse(res, user, extra = {}) {
 }
 
 // --- Health & bootstrap ----------------------------------------------------
-app.get('/api/health', asyncRoute(async (_req, res) => {
+app.get('/api/health', (req, res, next) => {
+  console.log('[health] endpoint hit directly, bypassing asyncRoute')
   res.json({ ok: true, driver: driverKind(), time: new Date().toISOString() })
-}))
+  console.log('[health] response sent')
+})
 
 app.get('/api/public/bootstrap', asyncRoute(async (_req, res) => {
   const data = await readAll()
@@ -110,7 +114,7 @@ app.get('/api/bootstrap', requireAuth, asyncRoute(async (req, res) => {
 }))
 
 // --- Auth ------------------------------------------------------------------
-app.post('/api/auth/login', loginLimiter, asyncRoute(async (req, res) => {
+app.post('/api/auth/login', rateLimiters.auth, asyncRoute(async (req, res) => {
   const { email, password } = req.body ?? {}
   const result = await login(email, password)
   if (!result.ok) return res.status(result.status).json({ error: result.error })
@@ -126,7 +130,7 @@ app.get('/api/auth/me', requireAuth, (req, res) => {
 })
 
 // --- Lead publik -----------------------------------------------------------
-app.post('/api/leads', asyncRoute(async (req, res) => {
+app.post('/api/leads', rateLimiters.public, asyncRoute(async (req, res) => {
   const { payload, channel } = req.body ?? {}
   if (!payload?.name || !payload?.email) {
     return res.status(400).json({ error: 'Nama dan email wajib diisi.' })
@@ -135,7 +139,7 @@ app.post('/api/leads', asyncRoute(async (req, res) => {
   res.status(201).json({ lead: result.lead, duplicate: result.duplicate })
 }))
 
-app.post('/api/events', asyncRoute(async (req, res) => {
+app.post('/api/events', rateLimiters.public, asyncRoute(async (req, res) => {
   await logEvent(req.body ?? {})
   res.status(204).end()
 }))

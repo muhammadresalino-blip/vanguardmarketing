@@ -12,6 +12,13 @@ export function formatCurrency(value) {
   return idr.format(Number(value) || 0)
 }
 
+export function formatRupiah(value) {
+  const n = Number(value) || 0
+  if (n >= 1_000_000_000) return `Rp${(n / 1_000_000_000).toFixed(1).replace('.0', '')}B`
+  if (n >= 1_000_000) return `Rp${Math.round(n / 1_000_000)}M`
+  return `Rp${n.toLocaleString('id-ID')}`
+}
+
 export function formatCompactCurrency(value) {
   const n = Number(value) || 0
   if (n >= 1_000_000_000) return `Rp${(n / 1_000_000_000).toFixed(1)} M`
